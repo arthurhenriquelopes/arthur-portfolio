@@ -47,7 +47,7 @@ const Hero = () => {
               strings={[
                 "código limpo",
                 "design elegante",
-                "abordagens criativas"
+                "abordagens criativas",
               ]}
               typeSpeed={45}
               backSpeed={30}
@@ -59,25 +59,28 @@ const Hero = () => {
 
         {/* Botões compactos lado a lado */}
         <div className="flex gap-2 justify-center items-center animate-fade-in px-2">
-          <Button 
+          <Button
             onClick={() => scrollToSection("projects")}
             className="h-10 flex-1 max-w-[120px] text-xs flex items-center justify-center gap-1.5 px-2"
           >
             <GoCommandPalette className="w-3.5 h-3.5" />
             <span>Projetos</span>
           </Button>
-          
+
           <Button
             variant="outline"
             asChild
             className="h-10 flex-1 max-w-[120px] text-xs flex items-center justify-center gap-1.5 px-2"
           >
-            <a href="/cv.pdf" download="Arthur_Henrique_CV.pdf">
-              <Download className="w-3.5 h-3.5" />
+            <a
+              href="/Arthur_Henrique_Lopes_Feitosa_CV.pdf"
+              download="Arthur_Henrique_Lopes_Feitosa_CV.pdf"
+            >
+              <Download className="mr-2 w-4 h-4" />
               <span>CV</span>
             </a>
           </Button>
-          
+
           <Button
             variant="outline"
             onClick={() => scrollToSection("contact")}
@@ -87,7 +90,7 @@ const Hero = () => {
           </Button>
         </div>
       </div>
-      
+
       {/* Seta centralizada */}
       <div className="absolute bottom-8 left-0 right-0 flex justify-center">
         <button
