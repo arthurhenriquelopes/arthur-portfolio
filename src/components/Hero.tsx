@@ -40,57 +40,56 @@ const Hero = () => {
         </h1>
 
         {/* Container com altura fixa para evitar quebra de layout */}
-        <div className="text-xl md:text-2xl text-muted-foreground mb-8 px-4 min-h-[5rem] md:min-h-[4rem] flex items-center justify-center">
-          <div className="max-w-3xl">
+        <div className="text-xl md:text-2xl text-muted-foreground mb-8 px-4 h-[5rem] md:h-[4rem] flex items-center justify-center">
+          <div className="max-w-3xl w-full flex flex-col md:block items-center">
             <span>Criando soluções digitais inteligentes através de </span>
-            <ReactTyped
-              strings={[
-                "código limpo",
-                "design elegante",
-                "abordagens criativas",
-              ]}
-              typeSpeed={45}
-              backSpeed={30}
-              loop
-              className="text-primary font-semibold"
-            />
+            <div className="inline-block min-h-[1.5em] md:min-h-0">
+              <ReactTyped
+                strings={[
+                  "código limpo",
+                  "design elegante",
+                  "ideias criativas"
+                ]}
+                typeSpeed={45}
+                backSpeed={30}
+                loop
+                className="text-primary font-semibold"
+              />
+            </div>
           </div>
         </div>
 
-        {/* Botões compactos lado a lado */}
-        <div className="flex gap-2 justify-center items-center animate-fade-in px-2">
-          <Button
+        {/* Botões responsivos: pequenos no mobile, grandes no desktop */}
+        <div className="flex gap-2 md:gap-4 justify-center items-center animate-fade-in px-2 md:px-0">
+          <Button 
             onClick={() => scrollToSection("projects")}
-            className="h-10 flex-1 max-w-[120px] text-xs flex items-center justify-center gap-1.5 px-2"
+            className="h-10 md:h-12 flex-1 max-w-[120px] md:max-w-[180px] text-xs md:text-base flex items-center justify-center gap-1.5 px-2 md:px-6"
           >
-            <GoCommandPalette className="w-3.5 h-3.5" />
+            <GoCommandPalette className="w-3.5 h-3.5 md:w-5 md:h-5" />
             <span>Projetos</span>
           </Button>
-
+          
           <Button
             variant="outline"
             asChild
-            className="h-10 flex-1 max-w-[120px] text-xs flex items-center justify-center gap-1.5 px-2"
+            className="h-10 md:h-12 flex-1 max-w-[120px] md:max-w-[180px] text-xs md:text-base flex items-center justify-center gap-1.5 px-2 md:px-6"
           >
-            <a
-              href="/Arthur_Henrique_Lopes_Feitosa_CV.pdf"
-              download="Arthur_Henrique_Lopes_Feitosa_CV.pdf"
-            >
-              <Download className="mr-2 w-4 h-4" />
+            <a href="/cv.pdf" download="Arthur_Henrique_CV.pdf">
+              <Download className="w-3.5 h-3.5 md:w-5 md:h-5" />
               <span>CV</span>
             </a>
           </Button>
-
+          
           <Button
             variant="outline"
             onClick={() => scrollToSection("contact")}
-            className="h-10 flex-1 max-w-[120px] text-xs flex items-center justify-center gap-1.5 px-2"
+            className="h-10 md:h-12 flex-1 max-w-[120px] md:max-w-[180px] text-xs md:text-base flex items-center justify-center gap-1.5 px-2 md:px-6"
           >
             <span>Contato</span>
           </Button>
         </div>
       </div>
-
+      
       {/* Seta centralizada */}
       <div className="absolute bottom-8 left-0 right-0 flex justify-center">
         <button
