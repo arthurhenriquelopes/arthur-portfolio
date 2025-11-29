@@ -9,7 +9,7 @@ const Skills = () => {
     },
     {
       category: "Backend",
-      skills: ["Spring", "Spring Boot", "Java", "FastAPI", "Python", "PostgreSQL", "REST API"],
+      skills: ["Spring Boot", "Java", "FastAPI", "Python", "PostgreSQL", "REST API"],
     },
     {
       category: "Mobile",
@@ -25,14 +25,14 @@ const Skills = () => {
     },
     {
       category: "Soft Skills",
-      skills: ["Proatividade", "Trabalho em Equipe", "Resolução de Problemas", "Criatividade"],
+      skills: ["Comunicação", "Trabalho em Equipe", "Resolução de Problemas", "Criatividade", "Scrum", "Kanban"],
     },
   ];
 
   return (
     <section id="skills" className="py-20 bg-accent">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+        <h2 className="font-serif text-4xl md:text-5xl font-bold text-center mb-4">
           Habilidades
         </h2>
         <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">

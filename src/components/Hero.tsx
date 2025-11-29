@@ -1,4 +1,4 @@
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import { ReactTyped } from "react-typed";
 import { GoCommandPalette } from "react-icons/go";
@@ -23,41 +23,67 @@ const Hero = () => {
       }}
     >
       <div className="container mx-auto px-4 text-center z-10">
+        {/* Foto de perfil */}
+        <div className="mb-6 flex justify-center">
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-full blur-lg opacity-75 group-hover:opacity-100 animate-pulse-slow transition duration-500"></div>
+            <img
+              src="https://media.licdn.com/dms/image/v2/D4D03AQF6YbwK4lmppg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1725550766410?e=1766016000&v=beta&t=jPMY8iWnxNLzO-hXud556I30aD9iLPtGjfA0PUQa7ok"
+              alt="Arthur Henrique"
+              className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-foreground/20 dark:border-foreground/40 shadow-2xl object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
         <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
           Olá, eu sou <span className="text-primary">Arthur Henrique</span>
         </h1>
-        <div className="text-xl md:text-2xl text-muted-foreground mb-8 min-h-[4rem] px-4">
-          <span>Criando soluções digitais inteligentes através de </span>
-          <ReactTyped
-            strings={[
-              "código limpo",
-              "design elegante",
-              "abordagens criativas"
-            ]}
-            typeSpeed={60}
-            backSpeed={40}
-            loop
-            className="text-primary font-semibold"
-          />
+
+        {/* Container com altura fixa para evitar quebra de layout */}
+        <div className="text-xl md:text-2xl text-muted-foreground mb-8 px-4 min-h-[5rem] md:min-h-[4rem] flex items-center justify-center">
+          <div className="max-w-3xl">
+            <span>Criando soluções digitais inteligentes através de </span>
+            <ReactTyped
+              strings={[
+                "código limpo",
+                "design elegante",
+                "abordagens criativas"
+              ]}
+              typeSpeed={45}
+              backSpeed={30}
+              loop
+              className="text-primary font-semibold"
+            />
+          </div>
         </div>
-        
-        {/* Botões com altura e largura iguais */}
-        <div className="flex flex-row gap-3 justify-center items-center animate-fade-in px-4">
+
+        {/* Botões compactos lado a lado */}
+        <div className="flex gap-2 justify-center items-center animate-fade-in px-2">
           <Button 
             onClick={() => scrollToSection("projects")}
-            className="h-11 w-40 sm:w-44 text-xs sm:text-sm flex items-center justify-center"
+            className="h-10 flex-1 max-w-[120px] text-xs flex items-center justify-center gap-1.5 px-2"
           >
-            <span className="hidden sm:inline">Ver Projetos</span>
-            <span className="sm:hidden">Projetos</span>
-            <GoCommandPalette className="ml-1.5 w-4 h-4" />
+            <GoCommandPalette className="w-3.5 h-3.5" />
+            <span>Projetos</span>
           </Button>
+          
+          <Button
+            variant="outline"
+            asChild
+            className="h-10 flex-1 max-w-[120px] text-xs flex items-center justify-center gap-1.5 px-2"
+          >
+            <a href="/cv.pdf" download="Arthur_Henrique_CV.pdf">
+              <Download className="w-3.5 h-3.5" />
+              <span>CV</span>
+            </a>
+          </Button>
+          
           <Button
             variant="outline"
             onClick={() => scrollToSection("contact")}
-            className="h-11 w-40 sm:w-44 text-xs sm:text-sm flex items-center justify-center"
+            className="h-10 flex-1 max-w-[120px] text-xs flex items-center justify-center gap-1.5 px-2"
           >
-            <span className="hidden sm:inline">Entrar em Contato</span>
-            <span className="sm:hidden">Contato</span>
+            <span>Contato</span>
           </Button>
         </div>
       </div>
@@ -66,7 +92,7 @@ const Hero = () => {
       <div className="absolute bottom-8 left-0 right-0 flex justify-center">
         <button
           onClick={() => scrollToSection("about")}
-          className="animate-bounce hover:text-primary transition-colors"
+          className="animate-bounce-slow hover:text-primary transition-colors duration-300"
         >
           <ArrowDown className="w-8 h-8 text-muted-foreground" />
         </button>

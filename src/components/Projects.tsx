@@ -1,6 +1,7 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import project1 from "@/assets/project1.jpg";
 import project2 from "@/assets/project2.jpeg";
@@ -17,6 +18,9 @@ const Projects = () => {
   const [api, setApi] = useState<EmblaCarouselType>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+  const [expandedProjects, setExpandedProjects] = useState<Set<number>>(
+    new Set()
+  );
 
   const projects = [
     {
@@ -51,7 +55,17 @@ const Projects = () => {
         "Chatbot inteligente com LLM para conversas naturais. Responde dúvidas e automatiza atendimento com IA generativa em tempo real.",
       image:
         "https://topflightapps.com/wp-content/uploads/2020/09/chatbot-UI-concept.jpg",
-      tags: ["Spring", "Spring Boot", "Java", "Gradle", "Flutter", "Dart", "Docker" ,"PostgreSQL", "DBeaver"],
+      tags: [
+        "Spring",
+        "Spring Boot",
+        "Java",
+        "Gradle",
+        "Flutter",
+        "Dart",
+        "Docker",
+        "PostgreSQL",
+        "DBeaver",
+      ],
       demo: null,
       code: null,
       wip: true,
@@ -95,12 +109,25 @@ const Projects = () => {
     });
   }, [api]);
 
+  const toggleExpand = (index: number) => {
+    setExpandedProjects((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
+
   return (
     <section id="projects" className="py-20">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+        <h2 className="font-serif text-4xl md:text-5xl font-bold text-center mb-4">
           Projetos
         </h2>
+
         <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
           Alguns dos meus trabalhos recentes que demonstram minhas habilidades e
           criatividade
@@ -116,84 +143,123 @@ const Projects = () => {
             }}
           >
             <CarouselContent className="-ml-4">
-              {projects.map((project, index) => (
-                <CarouselItem
-                  key={index}
-                  className="pl-4 md:basis-1/2 lg:basis-1/3"
-                >
-                  <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
-                    <div className="relative overflow-hidden aspect-[4/3]">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
+              {projects.map((project, index) => {
+                const isExpanded = expandedProjects.has(index);
+                const hasMoreTags = project.tags.length > 4;
+                const visibleTags = isExpanded
+                  ? project.tags
+                  : project.tags.slice(0, 4);
 
-                      {/* Faixa WIP - diagonal */}
-                      {project.wip && (
-                        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-                          <div className="absolute top-[50%] left-[-25%] w-[150%] bg-yellow-500/90 text-black font-bold text-lg text-center py-2 transform -rotate-45 shadow-lg">
-                            WIP - WORK IN PROGRESS
+                return (
+                  <CarouselItem
+                    key={index}
+                    className="pl-4 md:basis-1/2 lg:basis-1/3"
+                  >
+                    <Card className="overflow-hidden hover:shadow-xl hover:border-primary/30 transition-all duration-300 group h-full flex flex-col border-border/60">
+                      {/* Imagem */}
+                      <div className="relative overflow-hidden aspect-[4/3]">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+
+                        {/* Badge WIP na imagem */}
+                        {project.wip && (
+                          <div className="absolute top-3 right-3">
+                            <Badge className="bg-yellow-500 text-yellow-950 border-0 font-semibold shadow-lg">
+                              Em Desenvolvimento
+                            </Badge>
                           </div>
-                        </div>
-                      )}
+                        )}
+                      </div>
 
-                      {/* Badge de ano/tipo - ESTÁTICO no hover */}
-                      <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm px-3 py-1 rounded-full text-xs text-white border border-white/20">
-                        {project.year} • {project.type}
-                      </div>
-                    </div>
-                    <CardContent className="p-6 flex flex-col flex-1">
-                      <h3 className="text-xl font-semibold mb-2">
-                        {project.title}
-                      </h3>
-                      <p className="text-muted-foreground mb-4 text-sm line-clamp-3 flex-grow">
-                        {project.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tags.map((tag, tagIndex) => {
-                          const Icon = techIcons[tag];
-                          return (
-                            <span
-                              key={tagIndex}
-                              className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full flex items-center gap-1"
+                      <CardContent className="p-6 flex flex-col flex-1">
+                        {/* Título com badge ao lado */}
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                          <h3 className="text-xl font-semibold">
+                            {project.title}
+                          </h3>
+                          <Badge
+                            variant="secondary"
+                            className="text-xs whitespace-nowrap"
+                          >
+                            {project.year} • {project.type}
+                          </Badge>
+                        </div>
+
+                        {/* Descrição */}
+                        <p className="text-muted-foreground mb-4 text-sm line-clamp-3 flex-grow leading-relaxed">
+                          {project.description}
+                        </p>
+
+                        {/* Tags com scroll quando expandido */}
+                        <div
+                          className={`flex flex-wrap gap-2 mb-4 transition-all duration-300 ${
+                            isExpanded
+                              ? "max-h-32 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent hover:scrollbar-thumb-primary/40"
+                              : "max-h-none"
+                          }`}
+                        >
+                          {visibleTags.map((tag, tagIndex) => {
+                            const Icon = techIcons[tag];
+                            return (
+                              <Badge
+                                key={tagIndex}
+                                variant="outline"
+                                className="text-xs px-2 py-1 flex items-center gap-1"
+                              >
+                                {Icon && <Icon className="w-3 h-3" />}
+                                {tag}
+                              </Badge>
+                            );
+                          })}
+                          {hasMoreTags && (
+                            <Badge
+                              variant="outline"
+                              className="text-xs px-2 py-1 cursor-pointer hover:bg-primary/10 transition-colors"
+                              onClick={() => toggleExpand(index)}
                             >
-                              {Icon && <Icon className="w-3 h-3" />}
-                              {tag}
-                            </span>
-                          );
-                        })}
-                      </div>
-                      {/* Botões sempre presentes e alinhados no canto inferior esquerdo */}
-                      <div className="flex gap-2 pt-2">
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="text-xs"
-                          onClick={() =>
-                            project.code && window.open(project.code, "_blank")
-                          }
-                          disabled={!project.code}
-                        >
-                          <Github className="w-3 h-3 mr-1" />
-                          Código
-                        </Button>
-                        <Button
-                          size="sm"
-                          className="text-xs"
-                          onClick={() =>
-                            project.demo && window.open(project.demo, "_blank")
-                          }
-                          disabled={!project.demo}
-                        >
-                          <ExternalLink className="w-3 h-3 mr-1" />
-                          Demo
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
+                              {isExpanded
+                                ? "Menos"
+                                : `+${project.tags.length - 4}`}
+                            </Badge>
+                          )}
+                        </div>
+
+                        {/* Botões */}
+                        <div className="flex gap-2 pt-2">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="text-xs flex-1"
+                            onClick={() =>
+                              project.code &&
+                              window.open(project.code, "_blank")
+                            }
+                            disabled={!project.code}
+                          >
+                            <Github className="w-3 h-3 mr-1" />
+                            Código
+                          </Button>
+                          <Button
+                            size="sm"
+                            className="text-xs flex-1"
+                            onClick={() =>
+                              project.demo &&
+                              window.open(project.demo, "_blank")
+                            }
+                            disabled={!project.demo}
+                          >
+                            <ExternalLink className="w-3 h-3 mr-1" />
+                            Demo
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                );
+              })}
             </CarouselContent>
           </Carousel>
 
