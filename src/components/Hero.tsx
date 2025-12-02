@@ -28,7 +28,7 @@ const Hero = () => {
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-full blur-lg opacity-75 group-hover:opacity-100 animate-pulse-slow transition duration-500"></div>
             <img
-              src="https://media.licdn.com/dms/image/v2/D4D03AQF6YbwK4lmppg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1725550766410?e=1766016000&v=beta&t=jPMY8iWnxNLzO-hXud556I30aD9iLPtGjfA0PUQa7ok"
+              src="https://avatars.githubusercontent.com/u/166043613?s=400&u=f0772edd2bcb21ca3812ff7d6a8d287c96da0022&v=4"
               alt="Arthur Henrique"
               className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-foreground/20 dark:border-foreground/40 shadow-2xl object-cover hover:scale-105 transition-transform duration-300"
             />
