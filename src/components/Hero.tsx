@@ -74,7 +74,7 @@ const Hero = () => {
             asChild
             className="h-10 md:h-12 flex-1 max-w-[120px] md:max-w-[180px] text-xs md:text-base flex items-center justify-center gap-1.5 px-2 md:px-6"
           >
-            <a href="/cv.pdf" download="Arthur_Henrique_CV.pdf">
+            <a href="../../public/Arthur_Henrique_CV.pdf" download="Arthur_Henrique_CV.pdf">
               <Download className="w-3.5 h-3.5 md:w-5 md:h-5" />
               <span>CV</span>
             </a>
