@@ -1,8 +1,4 @@
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
-import { Button } from "./ui/button";
-import { Card, CardContent } from "./ui/card";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
+import { Mail, Github, Linkedin, Twitter, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import emailjs from '@emailjs/browser';
@@ -25,113 +21,151 @@ const Contact = () => {
       .then(
         () => {
           toast({
-            title: "Mensagem enviada!",
+            title: "✓ Mensagem enviada!",
             description: "Obrigado pelo contato. Responderei em breve!",
           });
-          e.currentTarget.reset();
+          (e.target as HTMLFormElement).reset();
         },
         (error) => {
           console.error('Erro:', error);
           toast({
-            title: "Erro ao enviar",
+            title: "✗ Erro ao enviar",
             description: "Tente novamente ou use o email direto.",
             variant: "destructive",
           });
         }
       )
-      .finally(() => {
-        setIsSubmitting(false);
-      });
+      .finally(() => setIsSubmitting(false));
   };
 
   const socialLinks = [
-    {
-      icon: Github,
-      href: "https://github.com/arthurhenriquelopes",
-      label: "GitHub",
-    },
-    {
-      icon: Linkedin,
-      href: "https://www.linkedin.com/in/arthur-henrique-lopes/",
-      label: "LinkedIn",
-    },
-    {
-      icon: Mail,
-      href: "mailto:arthurhenriquelopesf@gmail.com",
-      label: "Email",
-    },
-    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Github, href: "https://github.com/arthurhenriquelopes", label: "GitHub", color: "hover:text-gruvbox-fg" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/arthur-henrique-lopes/", label: "LinkedIn", color: "hover:text-gruvbox-blue" },
+    { icon: Mail, href: "mailto:arthurhenriquelopesf@gmail.com", label: "Email", color: "hover:text-gruvbox-yellow" },
+    { icon: Twitter, href: "#", label: "Twitter", color: "hover:text-gruvbox-aqua" },
   ];
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-20 bg-gruvbox-bg">
       <div className="container mx-auto px-4">
-        <h2 className="font-serif text-4xl md:text-5xl font-bold text-center mb-4">
-          Contato
-        </h2>
-        <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+        <div className="tui-section-header">
+          <h2 className="text-gruvbox-orange font-bold text-lg whitespace-nowrap">
+            <span className="text-gruvbox-gray">04.</span> contact
+          </h2>
+        </div>
+
+        <p className="text-gruvbox-fg4 text-sm mb-8 max-w-2xl">
+          <span className="text-gruvbox-gray"># </span>
           Vamos conversar sobre seu próximo projeto? Entre em contato!
         </p>
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <Card>
-            <CardContent className="pt-6">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Input name="from_name" placeholder="Seu Nome" required />
-                </div>
-                <div>
-                  <Input name="reply_to" type="email" placeholder="Seu Email" required />
-                </div>
-                <div>
-                  <Input name="subject" placeholder="Assunto" required />
-                </div>
-                <div>
-                  <Textarea
-                    name="message"
-                    placeholder="Sua Mensagem"
-                    className="min-h-[150px]"
-                    required
-                  />
-                </div>
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-          <div className="space-y-6">
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="text-2xl font-semibold mb-4">Vamos conectar!</h3>
-                <p className="text-muted-foreground mb-6">
-                  Estou sempre aberto a novas oportunidades e colaborações.
-                  Sinta-se à vontade para entrar em contato através das minhas
-                  redes sociais.
-                </p>
-                <div className="grid grid-cols-2 gap-3">
+
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {/* Form — styled as terminal input */}
+          <div className="border border-gruvbox-bg3 bg-gruvbox-bg1">
+            <div className="tui-titlebar">
+              <span className="tui-titlebar-dot bg-gruvbox-red" />
+              <span className="tui-titlebar-dot bg-gruvbox-yellow" />
+              <span className="tui-titlebar-dot bg-gruvbox-green" />
+              <span className="ml-2">mail --compose</span>
+            </div>
+            <form onSubmit={handleSubmit} className="p-4 space-y-3">
+              <div>
+                <label className="text-[10px] text-gruvbox-gray mb-1 block">From:</label>
+                <input
+                  name="from_name"
+                  placeholder="Seu Nome"
+                  required
+                  className="w-full bg-gruvbox-bg border border-gruvbox-bg3 px-3 py-2 text-xs text-gruvbox-fg placeholder:text-gruvbox-bg4 focus:outline-none focus:border-gruvbox-orange transition-colors"
+                />
+              </div>
+              <div>
+                <label className="text-[10px] text-gruvbox-gray mb-1 block">Reply-To:</label>
+                <input
+                  name="reply_to"
+                  type="email"
+                  placeholder="seu@email.com"
+                  required
+                  className="w-full bg-gruvbox-bg border border-gruvbox-bg3 px-3 py-2 text-xs text-gruvbox-fg placeholder:text-gruvbox-bg4 focus:outline-none focus:border-gruvbox-orange transition-colors"
+                />
+              </div>
+              <div>
+                <label className="text-[10px] text-gruvbox-gray mb-1 block">Subject:</label>
+                <input
+                  name="subject"
+                  placeholder="Assunto"
+                  required
+                  className="w-full bg-gruvbox-bg border border-gruvbox-bg3 px-3 py-2 text-xs text-gruvbox-fg placeholder:text-gruvbox-bg4 focus:outline-none focus:border-gruvbox-orange transition-colors"
+                />
+              </div>
+              <div>
+                <label className="text-[10px] text-gruvbox-gray mb-1 block">Body:</label>
+                <textarea
+                  name="message"
+                  placeholder="Sua mensagem..."
+                  required
+                  className="w-full bg-gruvbox-bg border border-gruvbox-bg3 px-3 py-2 text-xs text-gruvbox-fg placeholder:text-gruvbox-bg4 focus:outline-none focus:border-gruvbox-orange transition-colors min-h-[120px] resize-y"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-2 bg-gruvbox-orange/10 border border-gruvbox-orange text-gruvbox-orange text-xs font-medium hover:bg-gruvbox-orange/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                <Send className="w-3 h-3" />
+                {isSubmitting ? "Enviando..." : "$ send --now"}
+              </button>
+            </form>
+          </div>
+
+          {/* Social links — styled as connections */}
+          <div className="space-y-4">
+            <div className="border border-gruvbox-bg3 bg-gruvbox-bg1">
+              <div className="tui-titlebar">
+                <span className="tui-titlebar-dot bg-gruvbox-red" />
+                <span className="tui-titlebar-dot bg-gruvbox-yellow" />
+                <span className="tui-titlebar-dot bg-gruvbox-green" />
+                <span className="ml-2">connections</span>
+              </div>
+              <div className="p-4">
+                <p className="text-gruvbox-gray text-xs mb-4"># links para me encontrar na internet</p>
+                <div className="space-y-2">
                   {socialLinks.map((social, index) => {
                     const IconComponent = social.icon;
                     return (
-                      <Button
+                      <a
                         key={index}
-                        variant="outline"
-                        className="w-full"
-                        asChild
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center gap-3 px-3 py-2 text-xs text-gruvbox-fg4 ${social.color} hover:bg-gruvbox-bg2 border border-transparent hover:border-gruvbox-bg3 transition-all group`}
                       >
-                        <a
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <IconComponent className="w-4 h-4 mr-2" />
-                          {social.label}
-                        </a>
-                      </Button>
+                        <IconComponent className="w-4 h-4" />
+                        <span className="font-medium">{social.label}</span>
+                        <span className="text-gruvbox-bg4 ml-auto text-[10px] group-hover:text-gruvbox-fg4 transition-colors">
+                          →
+                        </span>
+                      </a>
                     );
                   })}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
+
+            {/* ASCII art accent */}
+            <div className="border border-gruvbox-bg3 bg-gruvbox-bg1 p-4">
+              <pre className="text-[10px] text-gruvbox-bg4 leading-tight select-none">
+{`  ╔══════════════════════════════╗
+  ║                              ║
+  ║   Estou sempre aberto a      ║
+  ║   novas oportunidades e      ║
+  ║   colaborações.              ║
+  ║                              ║
+  ║   Sinta-se à vontade para    ║
+  ║   entrar em contato!         ║
+  ║                              ║
+  ╚══════════════════════════════╝`}
+              </pre>
+            </div>
           </div>
         </div>
       </div>

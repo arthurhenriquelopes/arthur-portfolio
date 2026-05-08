@@ -1,83 +1,107 @@
 import { Code2, Lightbulb, Rocket } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
 
 const About = () => {
   const features = [
     {
       icon: Code2,
-      title: "Desenvolvimento Full‑Stack",
+      title: "dev.fullstack",
+      color: "text-gruvbox-green",
+      borderColor: "border-gruvbox-green/30 hover:border-gruvbox-green/60",
       description:
         "Aplicações modernas do frontend ao backend com qualidade de engenharia.",
     },
     {
       icon: Lightbulb,
-      title: "Soluções Criativas",
+      title: "solve.creative",
+      color: "text-gruvbox-yellow",
+      borderColor: "border-gruvbox-yellow/30 hover:border-gruvbox-yellow/60",
       description: "Abordagens inovadoras para destravar problemas complexos.",
     },
     {
       icon: Rocket,
-      title: "Impacto Real",
+      title: "ship.impact",
+      color: "text-gruvbox-orange",
+      borderColor: "border-gruvbox-orange/30 hover:border-gruvbox-orange/60",
       description: "Ferramentas que geram valor prático no dia a dia.",
     },
   ];
 
   return (
-    <section id="about" className="py-20 bg-accent">
+    <section id="about" className="py-20 bg-gruvbox-bg1">
       <div className="container mx-auto px-4">
-        <h2 className="font-serif text-4xl md:text-5xl font-bold text-center mb-10">
-          Sobre Mim
-        </h2>
-        <div className="max-w-3xl mx-auto mb-14">
-          <p className="text-lg text-foreground/80 text-center leading-relaxed mb-4">
-            Sou estudante de{" "}
-            <span className="font-semibold">Sistemas de Informação</span> e
-            desenvolvedor full‑stack apaixonado em aprender tecnologias novas e
-            resolver problemas complexos com abordagens criativas. Atualmente,
-            atuo como estagiário na Midas Desenvolvimento de Sistemas,
-            trabalhando em projetos de grande escala.
-          </p>
-          <p className="text-lg text-foreground/80 text-center leading-relaxed mb-4">
-            Sou comunicativo, colaborativo e experiente em metodologias ágeis.
-            Sempre busco aprender novas tecnologias, e rotineiramente,
-            desenvolvo projetos pessoais que facilitem o dia a dia.
-          </p>
-          <p className="text-lg text-foreground/80 text-center leading-relaxed">
-            No momento, estou dedicado no meu projeto de autoria pessoal{" "}
-            <a
-              href="https://distrowiki.site"
-              className="text-foreground font-semibold underline underline-offset-4 hover:text-primary transition-colors"
-              target="_blank"
-              rel="noreferrer"
-            >
-              DistroWiki
-            </a>{" "}
-            , uma plataforma open-source para
-            comparação de distribuições Linux com foco em experiência do usuário
-            e dados dinâmicos via IA. Minha meta é crescer como desenvolvedor
-            backend/full-stack criando soluções que gerem impacto positivo.
-          </p>
+        {/* Section header */}
+        <div className="tui-section-header">
+          <h2 className="text-gruvbox-orange font-bold text-lg whitespace-nowrap">
+            <span className="text-gruvbox-gray">01.</span> about
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {/* About text — styled like a config file */}
+        <div className="max-w-3xl mx-auto mb-14 tui-window p-6">
+          <div className="tui-titlebar -m-6 mb-6 px-4">
+            <span className="tui-titlebar-dot bg-gruvbox-red" />
+            <span className="tui-titlebar-dot bg-gruvbox-yellow" />
+            <span className="tui-titlebar-dot bg-gruvbox-green" />
+            <span className="ml-2">~/.config/about.conf</span>
+          </div>
+
+          <div className="space-y-3 text-sm">
+            <p className="text-gruvbox-gray"># quem sou eu</p>
+            <p className="text-gruvbox-fg leading-relaxed">
+              Sou estudante de{" "}
+              <span className="text-gruvbox-green font-semibold">Sistemas de Informação</span>{" "}
+              e desenvolvedor full‑stack apaixonado em aprender tecnologias novas e
+              resolver problemas complexos com abordagens criativas. Atualmente,
+              atuo como estagiário na{" "}
+              <span className="text-gruvbox-blue">Midas Desenvolvimento de Sistemas</span>,
+              trabalhando em projetos de grande escala.
+            </p>
+
+            <p className="text-gruvbox-gray"># habilidades interpessoais</p>
+            <p className="text-gruvbox-fg leading-relaxed">
+              Sou comunicativo, colaborativo e experiente em metodologias ágeis.
+              Sempre busco aprender novas tecnologias, e rotineiramente,
+              desenvolvo projetos pessoais que facilitem o dia a dia.
+            </p>
+
+            <p className="text-gruvbox-gray"># foco atual</p>
+            <p className="text-gruvbox-fg leading-relaxed">
+              No momento, estou dedicado no meu projeto de autoria pessoal{" "}
+              <a
+                href="https://distrowiki.site"
+                className="text-gruvbox-aqua font-semibold underline underline-offset-4 decoration-gruvbox-aqua/30 hover:decoration-gruvbox-aqua transition-colors"
+                target="_blank"
+                rel="noreferrer"
+              >
+                DistroWiki
+              </a>
+              , uma plataforma open-source para
+              comparação de distribuições Linux com foco em experiência do usuário
+              e dados dinâmicos via IA. Minha meta é crescer como desenvolvedor
+              backend/full-stack criando soluções que gerem impacto positivo.
+            </p>
+          </div>
+        </div>
+
+        {/* Feature cards — TUI style */}
+        <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {features.map((feature, idx) => {
             const Icon = feature.icon;
             return (
-              <Card
+              <div
                 key={idx}
-                className="h-full border-border/60 hover:border-primary/30 hover:shadow-md transition-colors"
+                className={`border ${feature.borderColor} bg-gruvbox-bg p-5 transition-all duration-300 group`}
               >
-                <CardContent className="pt-6 text-center flex flex-col items-center">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 ring-1 ring-primary/15 mb-4">
-                    <Icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="text-lg md:text-xl font-semibold mb-2">
+                <div className="flex items-center gap-3 mb-3">
+                  <Icon className={`w-5 h-5 ${feature.color}`} />
+                  <h3 className={`text-sm font-bold ${feature.color}`}>
                     {feature.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
+                </div>
+                <p className="text-gruvbox-fg4 text-xs leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
             );
           })}
         </div>

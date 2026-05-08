@@ -1,129 +1,133 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ═══════════════════════════════════════════════════════
+   GRUVBOX DARK TUI — Design System
+   Only dark mode. No light theme.
+   ═══════════════════════════════════════════════════════ */
 
 @layer base {
   :root {
-    --background: 209 40% 96%;
-    --foreground: 222 47% 11%;
+    /* Gruvbox Dark Hard bg */
+    --background: 0 0% 10%;
+    --foreground: 43 46% 82%;
 
-    --card: 210 40% 98%;
-    --card-foreground: 222 47% 11%;
+    /* bg1 */
+    --card: 20 6% 16%;
+    --card-foreground: 43 46% 82%;
 
-    --popover: 214 31% 91%;
-    --popover-foreground: 222 47% 11%;
+    /* bg2 */
+    --popover: 20 5% 21%;
+    --popover-foreground: 43 46% 82%;
 
-    --primary: 216 19% 26%;
-    --primary-foreground: 210 19% 98%;
+    /* Gruvbox bright orange as primary */
+    --primary: 27 99% 55%;
+    --primary-foreground: 0 0% 10%;
 
-    --secondary: 215 19% 34%;
-    --secondary-foreground: 210 40% 98%;
+    /* bg3 */
+    --secondary: 20 5% 26%;
+    --secondary-foreground: 43 46% 82%;
 
-    --muted: 215 20% 65%;
-    --muted-foreground: 222 47% 11%;
+    /* fg3 */
+    --muted: 40 5% 50%;
+    --muted-foreground: 40 9% 63%;
 
-    --accent: 210 40% 98%;
-    --accent-foreground: 215 16% 46%;
+    /* bg1 + fg4 */
+    --accent: 20 6% 16%;
+    --accent-foreground: 40 9% 63%;
 
-    --destructive: 0 72% 50%;
-    --destructive-foreground: 0 85% 97%;
+    /* Gruvbox bright red */
+    --destructive: 0 73% 55%;
+    --destructive-foreground: 43 46% 82%;
 
-    --border: 212 26% 83%;
-    --input: 212 26% 83%;
-    --ring: 216 19% 26%;
+    /* bg3 border */
+    --border: 20 5% 22%;
+    --input: 20 5% 22%;
+    --ring: 27 99% 55%;
 
-    --radius: 0rem;
+    --radius: 0px;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 216 19% 26%;
-    --sidebar-primary-foreground: 210 19% 98%;
-    --sidebar-accent: 215 19% 34%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 212 26% 83%;
-    --sidebar-ring: 216 19% 26%;
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 43 46% 82%;
+    --sidebar-primary: 27 99% 55%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 20 6% 16%;
+    --sidebar-accent-foreground: 40 9% 63%;
+    --sidebar-border: 20 5% 22%;
+    --sidebar-ring: 27 99% 55%;
 
-    --chart-1: 217 10% 64%;
-    --chart-2: 215 20% 65%;
-    --chart-3: 215 16% 46%;
-    --chart-4: 219 8% 46%;
-    --chart-5: 215 19% 34%;
+    --chart-1: 27 99% 55%;
+    --chart-2: 61 66% 44%;
+    --chart-3: 104 35% 51%;
+    --chart-4: 175 53% 56%;
+    --chart-5: 338 47% 55%;
 
-    --sidebar: 210 40% 98%;
+    /* Gruvbox accent colors */
+    --gruvbox-red: #fb4934;
+    --gruvbox-green: #b8bb26;
+    --gruvbox-yellow: #fabd2f;
+    --gruvbox-blue: #83a598;
+    --gruvbox-purple: #d3869b;
+    --gruvbox-aqua: #8ec07c;
+    --gruvbox-orange: #fe8019;
+    --gruvbox-gray: #928374;
+    --gruvbox-fg: #ebdbb2;
+    --gruvbox-fg4: #a89984;
+    --gruvbox-bg: #1d2021;
+    --gruvbox-bg1: #282828;
+    --gruvbox-bg2: #3c3836;
+    --gruvbox-bg3: #504945;
+    --gruvbox-bg4: #665c54;
 
-    --font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-    --font-serif: 'Crimson Pro', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-    --font-mono: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --font-sans: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --font-serif: 'JetBrains Mono', monospace;
+    --font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    --shadow-2xs: none;
+    --shadow-xs: none;
+    --shadow-sm: none;
+    --shadow: none;
+    --shadow-md: none;
+    --shadow-lg: 0 0 20px hsl(27 99% 55% / 0.08);
+    --shadow-xl: 0 0 30px hsl(27 99% 55% / 0.12);
+    --shadow-2xl: 0 0 40px hsl(27 99% 55% / 0.15);
 
     --tracking-normal: 0em;
     --spacing: 0.25rem;
   }
 
+  /* Force dark on everything */
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-
-    --card: 217 32% 17%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 215 24% 26%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 212 26% 83%;
-    --primary-foreground: 228 84% 4%;
-
-    --secondary: 215 19% 34%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 215 16% 46%;
-    --muted-foreground: 210 40% 98%;
-
-    --accent: 228 84% 4%;
-    --accent-foreground: 215 20% 65%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 85% 97%;
-
-    --border: 215 19% 34%;
-    --input: 215 19% 34%;
-    --ring: 212 26% 83%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 212 26% 83%;
-    --sidebar-primary-foreground: 228 84% 4%;
-    --sidebar-accent: 215 20% 65%;
-    --sidebar-accent-foreground: 228 84% 4%;
-    --sidebar-border: 215 19% 34%;
-    --sidebar-ring: 212 26% 83%;
-    --chart-1: 215 12% 83%;
-    --chart-2: 212 26% 83%;
-    --chart-3: 215 20% 65%;
-    --chart-4: 217 10% 64%;
-    --chart-5: 215 16% 46%;
-    --sidebar: 217 32% 17%;
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    --background: 0 0% 10%;
+    --foreground: 43 46% 82%;
+    --card: 20 6% 16%;
+    --card-foreground: 43 46% 82%;
+    --popover: 20 5% 21%;
+    --popover-foreground: 43 46% 82%;
+    --primary: 27 99% 55%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 20 5% 26%;
+    --secondary-foreground: 43 46% 82%;
+    --muted: 40 5% 50%;
+    --muted-foreground: 40 9% 63%;
+    --accent: 20 6% 16%;
+    --accent-foreground: 40 9% 63%;
+    --destructive: 0 73% 55%;
+    --destructive-foreground: 43 46% 82%;
+    --border: 20 5% 22%;
+    --input: 20 5% 22%;
+    --ring: 27 99% 55%;
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 43 46% 82%;
+    --sidebar-primary: 27 99% 55%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 20 6% 16%;
+    --sidebar-accent-foreground: 40 9% 63%;
+    --sidebar-border: 20 5% 22%;
+    --sidebar-ring: 27 99% 55%;
   }
 }
 
@@ -132,61 +136,218 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-sans);
-  }
-  
   html {
     scroll-behavior: smooth;
+    background-color: var(--gruvbox-bg);
   }
 
-  /* Transições suaves APENAS para cores de tema - SEM transform */
-  body,
-  section,
-  header,
-  footer,
-  nav,
-  aside,
-  article,
-  main,
-  div:not([class*="carousel"]):not([class*="embla"]),
-  h1, h2, h3, h4, h5, h6,
-  p, span, a {
-    transition: background-color 300ms ease-in-out, 
-                border-color 300ms ease-in-out, 
-                color 300ms ease-in-out;
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Transições para cards - SEM transform */
-  [class*="card"] {
-    transition: background-color 300ms ease-in-out,
-                border-color 300ms ease-in-out,
-                box-shadow 300ms ease-in-out;
+  /* Selection colors */
+  ::selection {
+    background-color: var(--gruvbox-orange);
+    color: var(--gruvbox-bg);
   }
 
-  /* Transições para buttons */
-  button:not([class*="carousel"]):not([class*="embla"]) {
-    transition: background-color 200ms ease-in-out,
-                border-color 200ms ease-in-out,
-                color 200ms ease-in-out;
+  ::-moz-selection {
+    background-color: var(--gruvbox-orange);
+    color: var(--gruvbox-bg);
   }
 }
 
-@layer utilities {
-  /* Animações */
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* ═══════════════════════════════════════════════════════
+   TUI COMPONENT CLASSES
+   ═══════════════════════════════════════════════════════ */
+
+@layer components {
+  /* Terminal window frame */
+  .tui-window {
+    border: 1px solid var(--gruvbox-bg3);
+    background-color: var(--gruvbox-bg1);
+    position: relative;
   }
 
-  @keyframes fade-in-fast {
+  .tui-window::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--gruvbox-orange) 15%,
+      var(--gruvbox-orange) 85%,
+      transparent 100%
+    );
+    opacity: 0.4;
+  }
+
+  /* Title bar */
+  .tui-titlebar {
+    background-color: var(--gruvbox-bg2);
+    border-bottom: 1px solid var(--gruvbox-bg3);
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--gruvbox-fg4);
+  }
+
+  .tui-titlebar-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* Prompt prefix */
+  .tui-prompt::before {
+    content: '❯ ';
+    color: var(--gruvbox-green);
+    font-weight: 700;
+  }
+
+  /* Comment style text */
+  .tui-comment {
+    color: var(--gruvbox-gray);
+  }
+
+  .tui-comment::before {
+    content: '# ';
+    color: var(--gruvbox-gray);
+  }
+
+  /* Section header with line */
+  .tui-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .tui-section-header::before {
+    content: '──';
+    color: var(--gruvbox-bg3);
+  }
+
+  .tui-section-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      var(--gruvbox-bg3) 0%,
+      transparent 100%
+    );
+  }
+
+  /* Blinking cursor */
+  .tui-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.1em;
+    background-color: var(--gruvbox-orange);
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+  }
+
+  /* Scanline overlay for retro feel */
+  .tui-scanlines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Glow effect for interactive elements */
+  .tui-glow {
+    text-shadow: 0 0 10px hsl(27 99% 55% / 0.3);
+  }
+
+  .tui-glow-green {
+    text-shadow: 0 0 10px rgba(184, 187, 38, 0.3);
+  }
+
+  .tui-glow-blue {
+    text-shadow: 0 0 10px rgba(131, 165, 152, 0.3);
+  }
+
+  /* Status bar at bottom */
+  .tui-statusbar {
+    background-color: var(--gruvbox-bg2);
+    border-top: 1px solid var(--gruvbox-bg3);
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--gruvbox-fg4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Tag/badge TUI style */
+  .tui-tag {
+    border: 1px solid var(--gruvbox-bg4);
+    padding: 2px 8px;
+    font-size: 12px;
+    color: var(--gruvbox-fg4);
+    background-color: var(--gruvbox-bg2);
+    transition: all 200ms ease;
+  }
+
+  .tui-tag:hover {
+    border-color: var(--gruvbox-orange);
+    color: var(--gruvbox-orange);
+  }
+
+  /* ASCII box-drawing borders */
+  .tui-box {
+    border: 1px solid var(--gruvbox-bg3);
+    position: relative;
+  }
+
+  .tui-box-highlight {
+    border: 1px solid var(--gruvbox-bg4);
+    position: relative;
+  }
+
+  .tui-box-highlight:hover {
+    border-color: var(--gruvbox-orange);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════ */
+
+@layer utilities {
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @keyframes fade-in {
     from {
       opacity: 0;
       transform: translateY(10px);
@@ -197,66 +358,118 @@ All colors MUST be HSL.
     }
   }
 
-  @keyframes bounce-slow {
-    0%, 100% {
-      transform: translateY(0);
-      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  @keyframes fade-in-fast {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
     }
-    50% {
-      transform: translateY(-15%);
-      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  @keyframes pulse-slow {
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes glow-pulse {
     0%, 100% {
-      opacity: 0.75;
+      text-shadow: 0 0 5px hsl(27 99% 55% / 0.2);
     }
     50% {
+      text-shadow: 0 0 15px hsl(27 99% 55% / 0.4), 0 0 30px hsl(27 99% 55% / 0.1);
+    }
+  }
+
+  @keyframes slide-right {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
       opacity: 1;
     }
   }
 
+  @keyframes matrix-rain {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
   .animate-fade-in {
-    animation: fade-in 0.8s ease-out forwards;
+    animation: fade-in 0.6s ease-out forwards;
   }
 
   .animate-fade-in-fast {
-    animation: fade-in-fast 0.4s ease-out forwards;
+    animation: fade-in-fast 0.3s ease-out forwards;
   }
 
-  .animate-bounce-slow {
-    animation: bounce-slow 3s infinite;
+  .animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
   }
 
-  .animate-pulse-slow {
-    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  .animate-slide-right {
+    animation: slide-right 0.5s ease-out forwards;
   }
 
-  /* Scrollbar customizada */
+  /* Scrollbar — Gruvbox styled */
   .scrollbar-thin {
     scrollbar-width: thin;
-  }
-  
-  .scrollbar-thin::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-  
-  .scrollbar-thumb-primary\/20::-webkit-scrollbar-thumb {
-    background-color: hsl(var(--primary) / 0.2);
-    border-radius: 9999px;
-  }
-  
-  .scrollbar-track-transparent::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  
-  .hover\:scrollbar-thumb-primary\/40:hover::-webkit-scrollbar-thumb {
-    background-color: hsl(var(--primary) / 0.4);
+    scrollbar-color: var(--gruvbox-bg3) var(--gruvbox-bg);
   }
 
-  /* Classe para desabilitar transições */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background-color: var(--gruvbox-bg);
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--gruvbox-bg3);
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: var(--gruvbox-bg4);
+  }
+
+  /* Global scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--gruvbox-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--gruvbox-bg3);
+    border: 1px solid var(--gruvbox-bg);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--gruvbox-bg4);
+  }
+
+  /* Disable transitions class */
   .no-transition {
     transition: none !important;
   }

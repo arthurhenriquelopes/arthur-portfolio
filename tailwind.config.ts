@@ -56,6 +56,24 @@ export default {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
+  			},
+  			// Gruvbox semantic colors
+  			gruvbox: {
+  				red: '#fb4934',
+  				green: '#b8bb26',
+  				yellow: '#fabd2f',
+  				blue: '#83a598',
+  				purple: '#d3869b',
+  				aqua: '#8ec07c',
+  				orange: '#fe8019',
+  				gray: '#928374',
+  				fg: '#ebdbb2',
+  				fg4: '#a89984',
+  				bg: '#1d2021',
+  				bg1: '#282828',
+  				bg2: '#3c3836',
+  				bg3: '#504945',
+  				bg4: '#665c54',
   			}
   		},
   		borderRadius: {
@@ -96,29 +114,24 @@ export default {
   		},
   		fontFamily: {
   			sans: [
-  				'DM Sans',
-  				'ui-sans-serif',
-  				'system-ui',
-  				'-apple-system',
-  				'BlinkMacSystemFont',
-  				'Segoe UI',
-  				'Roboto',
-  				'Helvetica Neue',
-  				'Arial',
-  				'Noto Sans',
-  				'sans-serif'
+  				'JetBrains Mono',
+  				'IBM Plex Mono',
+  				'ui-monospace',
+  				'SFMono-Regular',
+  				'Menlo',
+  				'Monaco',
+  				'Consolas',
+  				'Liberation Mono',
+  				'Courier New',
+  				'monospace'
   			],
   			serif: [
-  				'Crimson Pro',
-  				'ui-serif',
-  				'Georgia',
-  				'Cambria',
-  				'Times New Roman',
-  				'Times',
-  				'serif'
+  				'JetBrains Mono',
+  				'monospace'
   			],
   			mono: [
-  				'SF Mono',
+  				'JetBrains Mono',
+  				'IBM Plex Mono',
   				'ui-monospace',
   				'SFMono-Regular',
   				'Menlo',

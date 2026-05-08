@@ -1,10 +1,35 @@
-import { ArrowDown, Download } from "lucide-react";
-import { Button } from "./ui/button";
+import { Download, ArrowDown } from "lucide-react";
 import { ReactTyped } from "react-typed";
-import { GoCommandPalette } from "react-icons/go";
-import heroImage from "@/assets/hero-bg.jpg";
+import { useEffect, useState, useRef } from "react";
+
+const BOOT_SEQUENCE = [
+  "GRUB loading...",
+  "Initializing kernel 6.8.0-arthurix...",
+  "Loading modules: portfolio.ko, skills.ko, projects.ko",
+  "Mounting /dev/creativity on /home/arthur",
+  "Starting arthurd.service...",
+  "[  OK  ] Reached target graphical.target",
+];
 
 const Hero = () => {
+  const [bootLines, setBootLines] = useState<string[]>([]);
+  const [showMain, setShowMain] = useState(false);
+  const idxRef = useRef(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (idxRef.current < BOOT_SEQUENCE.length) {
+        const line = BOOT_SEQUENCE[idxRef.current];
+        setBootLines((prev) => [...prev, line]);
+        idxRef.current++;
+      } else {
+        clearInterval(timer);
+        setTimeout(() => setShowMain(true), 400);
+      }
+    }, 250);
+    return () => clearInterval(timer);
+  }, []);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -15,88 +40,150 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundImage: `linear-gradient(to bottom, hsl(var(--background) / 0.8), hsl(var(--background) / 0.95)), url(${heroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative min-h-screen flex flex-col items-center justify-center bg-gruvbox-bg overflow-hidden"
     >
-      <div className="container mx-auto px-4 text-center z-10">
-        {/* Foto de perfil */}
-        <div className="mb-6 flex justify-center">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-full blur-lg opacity-75 group-hover:opacity-100 animate-pulse-slow transition duration-500"></div>
-            <img
-              src="https://avatars.githubusercontent.com/u/166043613?s=400&u=f0772edd2bcb21ca3812ff7d6a8d287c96da0022&v=4"
-              alt="Arthur Henrique"
-              className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-foreground/20 dark:border-foreground/40 shadow-2xl object-cover hover:scale-105 transition-transform duration-300"
-            />
+      {/* Subtle grid background */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(168,153,132,0.5) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(168,153,132,0.5) 1px, transparent 1px)
+          `,
+          backgroundSize: "40px 40px",
+        }}
+      />
+
+      <div className="container mx-auto px-4 z-10 max-w-4xl">
+        {/* Boot sequence */}
+        <div className={`transition-all duration-500 ${showMain ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100 mb-8'}`}>
+          <div className="tui-window p-4">
+            <div className="tui-titlebar -m-4 mb-4">
+              <span className="tui-titlebar-dot bg-gruvbox-red" />
+              <span className="tui-titlebar-dot bg-gruvbox-yellow" />
+              <span className="tui-titlebar-dot bg-gruvbox-green" />
+              <span className="ml-2">boot</span>
+            </div>
+            {bootLines.map((line, i) => (
+              <div key={i} className="text-xs animate-fade-in-fast" style={{ animationDelay: `${i * 50}ms` }}>
+                {line.startsWith("[") ? (
+                  <>
+                    <span className="text-gruvbox-green">{line.substring(0, 8)}</span>
+                    <span className="text-gruvbox-fg">{line.substring(8)}</span>
+                  </>
+                ) : (
+                  <span className="text-gruvbox-fg4">{line}</span>
+                )}
+              </div>
+            ))}
+            {!showMain && bootLines.length > 0 && <span className="tui-cursor" />}
           </div>
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-          Olá, eu sou <span className="text-primary">Arthur Henrique</span>
-        </h1>
-
-        {/* Container com altura fixa para evitar quebra de layout */}
-        <div className="text-xl md:text-2xl text-muted-foreground mb-8 px-4 h-[5rem] md:h-[4rem] flex items-center justify-center">
-          <div className="max-w-3xl w-full flex flex-col md:block items-center">
-            <span>Criando soluções digitais inteligentes através de </span>
-            <div className="inline-block min-h-[1.5em] md:min-h-0">
-              <ReactTyped
-                strings={[
-                  "código limpo",
-                  "design elegante",
-                  "ideias criativas"
-                ]}
-                typeSpeed={45}
-                backSpeed={30}
-                loop
-                className="text-primary font-semibold"
+        {/* Main content */}
+        <div className={`transition-all duration-700 ${showMain ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          {/* Avatar with terminal frame */}
+          <div className="flex justify-center mb-8">
+            <div className="relative">
+              <div className="absolute -inset-[2px] bg-gradient-to-br from-gruvbox-orange via-gruvbox-yellow to-gruvbox-green opacity-60" />
+              <img
+                src="https://avatars.githubusercontent.com/u/166043613?s=400&u=f0772edd2bcb21ca3812ff7d6a8d287c96da0022&v=4"
+                alt="Arthur Henrique"
+                className="relative w-28 h-28 md:w-36 md:h-36 object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
               />
             </div>
           </div>
-        </div>
 
-        {/* Botões responsivos: pequenos no mobile, grandes no desktop */}
-        <div className="flex gap-2 md:gap-4 justify-center items-center animate-fade-in px-2 md:px-0">
-          <Button 
-            onClick={() => scrollToSection("projects")}
-            className="h-10 md:h-12 flex-1 max-w-[120px] md:max-w-[180px] text-xs md:text-base flex items-center justify-center gap-1.5 px-2 md:px-6"
-          >
-            <GoCommandPalette className="w-3.5 h-3.5 md:w-5 md:h-5" />
-            <span>Projetos</span>
-          </Button>
-          
-          <Button
-            variant="outline"
-            asChild
-            className="h-10 md:h-12 flex-1 max-w-[120px] md:max-w-[180px] text-xs md:text-base flex items-center justify-center gap-1.5 px-2 md:px-6"
-          >
-            <a href="../../public/Arthur_Henrique_CV.pdf" download="Arthur_Henrique_CV.pdf">
-              <Download className="w-3.5 h-3.5 md:w-5 md:h-5" />
-              <span>CV</span>
-            </a>
-          </Button>
-          
-          <Button
-            variant="outline"
-            onClick={() => scrollToSection("contact")}
-            className="h-10 md:h-12 flex-1 max-w-[120px] md:max-w-[180px] text-xs md:text-base flex items-center justify-center gap-1.5 px-2 md:px-6"
-          >
-            <span>Contato</span>
-          </Button>
+          {/* Terminal-style intro */}
+          <div className="tui-window p-6 md:p-8">
+            <div className="tui-titlebar -m-6 md:-m-8 mb-6 md:mb-8 px-4">
+              <span className="tui-titlebar-dot bg-gruvbox-red" />
+              <span className="tui-titlebar-dot bg-gruvbox-yellow" />
+              <span className="tui-titlebar-dot bg-gruvbox-green" />
+              <span className="ml-2">~/arthur-henrique</span>
+            </div>
+
+            {/* whoami */}
+            <div className="mb-6">
+              <div className="flex items-center gap-2 text-sm mb-1">
+                <span className="text-gruvbox-green font-bold">❯</span>
+                <span className="text-gruvbox-blue">whoami</span>
+              </div>
+              <h1 className="text-3xl md:text-5xl font-bold text-gruvbox-fg ml-4 mb-2">
+                Arthur <span className="text-gruvbox-orange">Henrique</span>
+              </h1>
+              <p className="text-gruvbox-fg4 ml-4 text-sm">
+                Desenvolvedor Full-Stack · Criador de soluções digitais
+              </p>
+            </div>
+
+            {/* Typing effect */}
+            <div className="mb-6">
+              <div className="flex items-center gap-2 text-sm mb-1">
+                <span className="text-gruvbox-green font-bold">❯</span>
+                <span className="text-gruvbox-blue">cat</span>
+                <span className="text-gruvbox-fg4">motto.txt</span>
+              </div>
+              <div className="ml-4 text-gruvbox-yellow text-base md:text-lg h-[2em] flex items-center">
+                <span className="text-gruvbox-gray">&quot;</span>
+                <ReactTyped
+                  strings={[
+                    "Criando soluções através de código limpo",
+                    "Transformando ideias em interfaces elegantes",
+                    "Resolvendo problemas com criatividade",
+                  ]}
+                  typeSpeed={40}
+                  backSpeed={25}
+                  loop
+                  className="text-gruvbox-yellow"
+                />
+                <span className="text-gruvbox-gray">&quot;</span>
+              </div>
+            </div>
+
+            {/* Action buttons as commands */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-gruvbox-green font-bold">❯</span>
+                <span className="text-gruvbox-gray">-- comandos disponíveis:</span>
+              </div>
+              <div className="ml-4 flex flex-wrap gap-2">
+                <button
+                  onClick={() => scrollToSection("projects")}
+                  className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-green hover:border-gruvbox-green hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium"
+                >
+                  $ ls ./projetos
+                </button>
+                <a
+                  href="/Arthur_Henrique_Lopes_Feitosa_CV.pdf"
+                  download="Arthur_Henrique_CV.pdf"
+                  className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-blue hover:border-gruvbox-blue hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium flex items-center gap-1.5"
+                >
+                  <Download className="w-3 h-3" />
+                  $ download cv.pdf
+                </a>
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-orange hover:border-gruvbox-orange hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium"
+                >
+                  $ mail --compose
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      
-      {/* Seta centralizada */}
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-6 left-0 right-0 flex justify-center z-10">
         <button
           onClick={() => scrollToSection("about")}
-          className="animate-bounce-slow hover:text-primary transition-colors duration-300"
+          className="text-gruvbox-fg4 hover:text-gruvbox-orange transition-colors flex flex-col items-center gap-1 group"
         >
-          <ArrowDown className="w-8 h-8 text-muted-foreground" />
+          <span className="text-[10px] text-gruvbox-gray group-hover:text-gruvbox-orange transition-colors">
+            scroll
+          </span>
+          <ArrowDown className="w-4 h-4 animate-bounce" />
         </button>
       </div>
     </section>

@@ -1,15 +1,24 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "./ui/button";
-import ThemeToggle from "./ThemeToggle";
+import { Menu, X, Terminal } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Detect active section
+      const sections = ["hero", "about", "projects", "skills", "contact"];
+      for (const section of sections.reverse()) {
+        const el = document.getElementById(section);
+        if (el && el.getBoundingClientRect().top <= 100) {
+          setActiveSection(section);
+          break;
+        }
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -24,65 +33,79 @@ const Navigation = () => {
   };
 
   const navLinks = [
-    { name: "Início", id: "hero" },
-    { name: "Sobre", id: "about" },
-    { name: "Projetos", id: "projects" },
-    { name: "Habilidades", id: "skills" },
-    { name: "Contato", id: "contact" },
+    { name: "~", id: "hero", label: "home" },
+    { name: "about", id: "about", label: "sobre" },
+    { name: "projects", id: "projects", label: "projetos" },
+    { name: "skills", id: "skills", label: "skills" },
+    { name: "contact", id: "contact", label: "contato" },
   ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-card/95 backdrop-blur-md shadow-md" : "bg-transparent"
+        isScrolled
+          ? "bg-gruvbox-bg/95 backdrop-blur-sm border-b border-gruvbox-bg3"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-12">
+          {/* Logo — terminal style */}
           <button
             onClick={() => scrollToSection("hero")}
-            className="text-xl font-bold text-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-2 text-gruvbox-green hover:text-gruvbox-orange transition-colors font-bold text-sm group"
           >
-            Portfolio
+            <Terminal className="w-4 h-4" />
+            <span className="text-gruvbox-fg4 group-hover:text-gruvbox-orange">arthur</span>
+            <span className="text-gruvbox-orange">@</span>
+            <span className="text-gruvbox-blue group-hover:text-gruvbox-orange">portfolio</span>
+            <span className="text-gruvbox-fg4">:~$</span>
           </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Desktop Navigation — tab-style */}
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className={`px-3 py-1 text-xs font-medium transition-all duration-200 border ${
+                  activeSection === link.id
+                    ? "bg-gruvbox-bg2 text-gruvbox-orange border-gruvbox-bg3 border-b-gruvbox-bg2"
+                    : "text-gruvbox-fg4 border-transparent hover:text-gruvbox-fg hover:border-gruvbox-bg3"
+                }`}
               >
-                {link.name}
+                [{link.name}]
               </button>
             ))}
-            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-gruvbox-fg4 hover:text-gruvbox-orange transition-colors p-1"
             >
-              {isMobileMenuOpen ? <X /> : <Menu />}
-            </Button>
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-3 bg-card">
-            {navLinks.map((link) => (
+          <div className="md:hidden py-2 bg-gruvbox-bg1 border border-gruvbox-bg3 mb-2 animate-fade-in-fast">
+            {navLinks.map((link, idx) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left px-4 py-2 text-foreground hover:text-primary hover:bg-accent transition-colors"
+                className={`block w-full text-left px-4 py-2 text-sm transition-colors ${
+                  activeSection === link.id
+                    ? "text-gruvbox-orange bg-gruvbox-bg2"
+                    : "text-gruvbox-fg4 hover:text-gruvbox-fg hover:bg-gruvbox-bg2"
+                }`}
               >
-                {link.name}
+                <span className="text-gruvbox-gray mr-2">{idx + 1}.</span>
+                [{link.name}]
+                <span className="text-gruvbox-gray ml-2">-- {link.label}</span>
               </button>
             ))}
           </div>
