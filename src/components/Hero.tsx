@@ -163,6 +163,12 @@ const Hero = () => {
                   $ download cv.pdf
                 </a>
                 <button
+                  onClick={() => scrollToSection("certificates")}
+                  className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-yellow hover:border-gruvbox-yellow hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium"
+                >
+                  $ cat ./certificados
+                </button>
+                <button
                   onClick={() => scrollToSection("contact")}
                   className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-orange hover:border-gruvbox-orange hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium"
                 >
