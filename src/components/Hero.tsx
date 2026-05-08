@@ -155,8 +155,8 @@ const Hero = () => {
                   $ ls ./projetos
                 </button>
                 <a
-                  href="/Arthur_Henrique_Lopes_Feitosa_CV.pdf"
-                  download="Arthur_Henrique_CV.pdf"
+                  href="/curriculo-arthur-henrique.pdf"
+                  download="Curriculo_Arthur_Henrique.pdf"
                   className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-blue hover:border-gruvbox-blue hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium flex items-center gap-1.5"
                 >
                   <Download className="w-3 h-3" />

@@ -50,7 +50,7 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="tui-section-header">
           <h2 className="text-gruvbox-orange font-bold text-lg whitespace-nowrap">
-            <span className="text-gruvbox-gray">04.</span> contact
+            <span className="text-gruvbox-gray">05.</span> contact
           </h2>
         </div>
 
