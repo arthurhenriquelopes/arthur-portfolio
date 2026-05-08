@@ -1,4 +1,4 @@
-import { Award, ChevronDown, ChevronRight, ExternalLink } from "lucide-react";
+import { Award, ChevronDown, ChevronRight, ExternalLink, Coffee, Leaf, FlaskConical, Brain, MessageSquareCode, Bot, Database, GitBranch, Cpu, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 
 interface Certificate {
@@ -9,7 +9,7 @@ interface Certificate {
 interface CertCategory {
   category: string;
   color: string;
-  icon: string;
+  icon: LucideIcon;
   certs: Certificate[];
 }
 
@@ -17,7 +17,7 @@ const certData: CertCategory[] = [
   {
     category: "Java",
     color: "text-gruvbox-red",
-    icon: "☕",
+    icon: Coffee,
     certs: [
       { name: "Fundamentos da Sintaxe da Linguagem Java", file: "Certificado - Fundamentos da Sintaxe da Linguagem Java.pdf" },
       { name: "Estruturas de Controle em Java", file: "Certificado - Estruturas de Controle em Java.pdf" },
@@ -38,7 +38,7 @@ const certData: CertCategory[] = [
   {
     category: "Spring Boot & APIs",
     color: "text-gruvbox-green",
-    icon: "🌱",
+    icon: Leaf,
     certs: [
       { name: "Introdução a Spring Framework com Spring Boot", file: "Certificado - Introdução a Spring Framework com Spring Boot.pdf" },
       { name: "Ecossistema Spring para Desenvolvimento de APIs", file: "Certificado - Ecossistema Spring para Desenvolvimento de APIs.pdf" },
@@ -53,7 +53,7 @@ const certData: CertCategory[] = [
   {
     category: "Testes de Software",
     color: "text-gruvbox-aqua",
-    icon: "🧪",
+    icon: FlaskConical,
     certs: [
       { name: "Introdução a Testes de Software", file: "Certificado - Introdução a Testes de Software.pdf" },
       { name: "Testes Unitários Com JUnit", file: "Certificado - Testes Unitários Com JUnit.pdf" },
@@ -64,7 +64,7 @@ const certData: CertCategory[] = [
   {
     category: "Inteligência Artificial",
     color: "text-gruvbox-purple",
-    icon: "🤖",
+    icon: Brain,
     certs: [
       { name: "Fundamentos de IA", file: "Certificado - Fundamentos de IA.pdf" },
       { name: "Aplicações Práticas da Inteligência Artificial", file: "Certificado - Aplicações Práticas da Inteligência Artificial.pdf" },
@@ -78,7 +78,7 @@ const certData: CertCategory[] = [
   {
     category: "Engenharia de Prompt",
     color: "text-gruvbox-yellow",
-    icon: "✍️",
+    icon: MessageSquareCode,
     certs: [
       { name: "Introdução à Engenharia de Prompts", file: "Certificado - Introdução à Engenharia de Prompts.pdf" },
       { name: "Introdução a Engenharia de Prompt", file: "Certificado - Introdução a Engenharia de Prompt.pdf" },
@@ -89,7 +89,7 @@ const certData: CertCategory[] = [
   {
     category: "Agentes & Copilotos IA",
     color: "text-gruvbox-orange",
-    icon: "🛸",
+    icon: Bot,
     certs: [
       { name: "Fundamentos de Agentes Autônomos", file: "Certificado - Fundamentos de Agentes Autônomos.pdf" },
       { name: "Primeiros Passos Para Criar Agentes", file: "Certificado - Primeiros Passos Para Criar Agentes.pdf" },
@@ -104,7 +104,7 @@ const certData: CertCategory[] = [
   {
     category: "Banco de Dados & Python",
     color: "text-gruvbox-blue",
-    icon: "🗄️",
+    icon: Database,
     certs: [
       { name: "Introdução a Banco de Dados Relacionais", file: "Certificado - Introdução a Banco de Dados Relacionais.pdf" },
       { name: "Criando suas Primeiras Consultas SQL", file: "Certificado - Criando suas Primeiras Consultas SQL.pdf" },
@@ -114,7 +114,7 @@ const certData: CertCategory[] = [
   {
     category: "DevOps & Boas Práticas",
     color: "text-gruvbox-fg",
-    icon: "⚙️",
+    icon: GitBranch,
     certs: [
       { name: "Git e GitHub — Primeiros Passos e Configuração", file: "Certificado - Git e GitHub - Primeiros Passos e Configuração do Ambiente.pdf" },
       { name: "Introdução a Clean Code", file: "Certificado - Introdução a Clean Code.pdf" },
@@ -125,7 +125,7 @@ const certData: CertCategory[] = [
   {
     category: "Sistemas Embarcados & IoT",
     color: "text-gruvbox-aqua",
-    icon: "🔌",
+    icon: Cpu,
     certs: [
       { name: "Introdução a Sistemas Embarcados", file: "Certificado - Introducao a Sistemas Embarcados.pdf" },
       { name: "Fundamentos de Eletricidade", file: "Certificado - Fundamentos de Eletricidade.pdf" },
@@ -207,7 +207,7 @@ const Certificates = () => {
                   ) : (
                     <ChevronRight className="w-3.5 h-3.5 text-gruvbox-fg4 flex-shrink-0" />
                   )}
-                  <span className="text-base mr-1">{category.icon}</span>
+                  <category.icon className={`w-4 h-4 ${category.color} flex-shrink-0`} />
                   <span className={`text-sm font-bold ${category.color}`}>
                     {category.category}/
                   </span>
