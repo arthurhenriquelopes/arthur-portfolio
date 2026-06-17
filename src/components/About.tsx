@@ -51,10 +51,9 @@ const About = () => {
               Sou estudante de{" "}
               <span className="text-gruvbox-green font-semibold">Sistemas de Informação</span>{" "}
               e desenvolvedor full‑stack apaixonado em aprender tecnologias novas e
-              resolver problemas complexos com abordagens criativas. Atualmente,
-              atuo como estagiário na{" "}
+              resolver problemas complexos com abordagens criativas. Atuei como estagiário na{" "}
               <span className="text-gruvbox-blue">Midas Desenvolvimento de Sistemas</span>,
-              trabalhando em projetos de grande escala.
+              trabalhando em projetos de grande escala e participando de equipes colaborativas em metodologias ágeis scrum e kanban.
             </p>
 
             <p className="text-gruvbox-gray"># habilidades interpessoais</p>
