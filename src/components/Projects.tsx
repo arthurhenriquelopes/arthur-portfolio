@@ -8,8 +8,10 @@ import { useEffect, useRef, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import type { EmblaCarouselType } from "embla-carousel";
 import { techIcons } from "@/lib/icons";
+import { useTranslation } from "react-i18next";
 
 const Projects = () => {
+  const { t } = useTranslation();
   const plugin = useRef(Autoplay({ delay: 10000, stopOnInteraction: false }));
   const [api, setApi] = useState<EmblaCarouselType>();
   const [current, setCurrent] = useState(0);
@@ -20,8 +22,8 @@ const Projects = () => {
     {
       title: "SIGAMA Vision",
       year: "2025",
-      type: "AGED/FAPEMA",
-      description: "Sistema de Gestão Agropecuária com interface moderna e que conta com Dashboards Inteligentes e fluídos. IA para processar documentos de forma automática.",
+      type: t("projects.p1_type"),
+      description: t("projects.p1_desc"),
       image: project1,
       tags: ["React", "TypeScript", "Tailwind", "Recharts", "Claude API"],
       demo: "https://sigama-vision.vercel.app/",
@@ -31,8 +33,8 @@ const Projects = () => {
     {
       title: "DistroWiki",
       year: "2025",
-      type: "Open Source",
-      description: "Plataforma de comparação de distribuições Linux para auxiliar a decisão do usuário. Dados alimentados dinamicamente via Groq IA.",
+      type: t("projects.p2_type"),
+      description: t("projects.p2_desc"),
       image: project2,
       tags: ["React", "TypeScript", "FastAPI", "Google Sheets API", "Groq API"],
       demo: "https://distrowiki.site",
@@ -42,8 +44,8 @@ const Projects = () => {
     {
       title: "Lumma.ia",
       year: "2025",
-      type: "MIDAS • Em Produção",
-      description: "Chatbot inteligente com LLM para conversas naturais. Responde dúvidas e automatiza atendimento com IA generativa em tempo real.",
+      type: t("projects.p3_type"),
+      description: t("projects.p3_desc"),
       image: "https://topflightapps.com/wp-content/uploads/2020/09/chatbot-UI-concept.jpg",
       tags: ["Spring", "Spring Boot", "Java", "Gradle", "Flutter", "Dart", "Docker", "PostgreSQL", "DBeaver"],
       demo: null,
@@ -53,8 +55,8 @@ const Projects = () => {
     {
       title: "Saúde++",
       year: "2025",
-      type: "Colaborativo",
-      description: "Sistema de gestão para clínicas com agendamento inteligente. Dashboards inteligentes, modernos e fáceis de usar.",
+      type: t("projects.p4_type"),
+      description: t("projects.p4_desc"),
       image: project3,
       tags: ["Vue", "JavaScript", "Tailwind", "Vite", "Pinia"],
       demo: "https://saudeplusplus.vercel.app/",
@@ -64,8 +66,8 @@ const Projects = () => {
     {
       title: "SenhaForte.com",
       year: "2025",
-      type: "Pessoal",
-      description: "Gerador de senhas seguras com personalização completa. Ajuste tamanho e tipos de caracteres, copie rapidamente e salve o histórico local.",
+      type: t("projects.p5_type"),
+      description: t("projects.p5_desc"),
       image: project4,
       tags: ["HTML", "CSS", "JavaScript"],
       demo: "https://senha-forte.vercel.app/",
@@ -95,13 +97,13 @@ const Projects = () => {
       <div className="container mx-auto px-4">
         <div className="tui-section-header">
           <h2 className="text-gruvbox-orange font-bold text-lg whitespace-nowrap">
-            <span className="text-gruvbox-gray">02.</span> projects
+            <span className="text-gruvbox-gray">02.</span> {t("nav.projects")}
           </h2>
         </div>
 
         <p className="text-gruvbox-fg4 text-sm mb-8 max-w-2xl">
           <span className="text-gruvbox-gray"># </span>
-          Alguns dos meus trabalhos recentes que demonstram minhas habilidades e criatividade
+          {t("projects.subtitle")}
         </p>
 
         <div className="max-w-7xl mx-auto">
@@ -215,7 +217,7 @@ const Projects = () => {
                     : "bg-gruvbox-bg3 w-3 hover:bg-gruvbox-bg4"
                 }`}
                 onClick={() => api?.scrollTo(index)}
-                aria-label={`Ir para slide ${index + 1}`}
+                aria-label={`${t("projects.aria_slide")} ${index + 1}`}
               />
             ))}
           </div>

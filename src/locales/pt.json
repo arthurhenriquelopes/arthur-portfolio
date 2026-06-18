@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "home": "home",
+    "about": "sobre",
+    "projects": "projetos",
+    "skills": "skills",
+    "certificates": "certificados",
+    "contact": "contato"
+  },
+  "hero": {
+    "subtitle": "Desenvolvedor Full-Stack · Criador de soluções digitais",
+    "motto1": "Criando soluções através de código limpo",
+    "motto2": "Transformando ideias em interfaces elegantes",
+    "motto3": "Resolvendo problemas com criatividade",
+    "commands_label": "-- comandos disponíveis:",
+    "cmd_projects": "$ ls ./projetos",
+    "cmd_cv": "$ download cv.pdf",
+    "cmd_certs": "$ cat ./certificados",
+    "cmd_mail": "$ mail --compose",
+    "scroll": "scroll"
+  },
+  "about": {
+    "header": "01. sobre",
+    "sec1_title": "# quem sou eu",
+    "sec1_p1_1": "Sou estudante de",
+    "sec1_p1_2": "Sistemas de Informação",
+    "sec1_p1_3": "e desenvolvedor full‑stack apaixonado em aprender tecnologias novas e resolver problemas complexos com abordagens criativas. Atuei como estagiário na",
+    "sec1_p1_4": "Midas Desenvolvimento de Sistemas",
+    "sec1_p1_5": ", trabalhando em projetos de grande escala e participando de equipes colaborativas em metodologias ágeis scrum e kanban.",
+    "sec2_title": "# habilidades interpessoais",
+    "sec2_p1": "Sou comunicativo, colaborativo e experiente em metodologias ágeis. Sempre busco aprender novas tecnologias, e rotineiramente, desenvolvo projetos pessoais que facilitem o dia a dia.",
+    "sec3_title": "# foco atual",
+    "sec3_p1_1": "No momento, estou dedicado no meu projeto de autoria pessoal",
+    "sec3_p1_2": ", uma plataforma open-source para comparação de distribuições Linux com foco em experiência do usuário e dados dinâmicos via IA. Minha meta é crescer como desenvolvedor backend/full-stack criando soluções que gerem impacto positivo.",
+    "feat1_desc": "Aplicações modernas do frontend ao backend com qualidade de engenharia.",
+    "feat2_desc": "Abordagens inovadoras para destravar problemas complexos.",
+    "feat3_desc": "Ferramentas que geram valor prático no dia a dia."
+  },
+  "projects": {
+    "subtitle": "Alguns dos meus trabalhos recentes que demonstram minhas habilidades e criatividade",
+    "aria_slide": "Ir para slide",
+    "p1_type": "AGED/FAPEMA",
+    "p1_desc": "Sistema de Gestão Agropecuária com interface moderna e que conta com Dashboards Inteligentes e fluídos. IA para processar documentos de forma automática.",
+    "p2_type": "Open Source",
+    "p2_desc": "Plataforma de comparação de distribuições Linux para auxiliar a decisão do usuário. Dados alimentados dinamicamente via Groq IA.",
+    "p3_type": "MIDAS • Em Produção",
+    "p3_desc": "Chatbot inteligente com LLM para conversas naturais. Responde dúvidas e automatiza atendimento com IA generativa em tempo real.",
+    "p4_type": "Colaborativo",
+    "p4_desc": "Sistema de gestão para clínicas com agendamento inteligente. Dashboards inteligentes, modernos e fáceis de usar.",
+    "p5_type": "Pessoal",
+    "p5_desc": "Gerador de senhas seguras com personalização completa. Ajuste tamanho e tipos de caracteres, copie rapidamente e salve o histórico local."
+  },
+  "skills": {
+    "subtitle": "Tecnologias e ferramentas que domino para criar soluções eficientes",
+    "cat_front": "Frontend",
+    "cat_back": "Backend",
+    "cat_mobile": "Mobile",
+    "cat_tools": "Ferramentas",
+    "cat_ai": "IA & APIs",
+    "cat_soft": "Soft Skills",
+    "comm": "Comunicação",
+    "team": "Trabalho em Equipe",
+    "prob": "Resolução de Problemas",
+    "creat": "Criatividade"
+  },
+  "certs": {
+    "subtitle1": "certificados em",
+    "subtitle2": "categorias",
+    "cat_java": "Java",
+    "cat_spring": "Spring Boot & APIs",
+    "cat_test": "Testes de Software",
+    "cat_ai": "Inteligência Artificial",
+    "cat_prompt": "Engenharia de Prompt",
+    "cat_agents": "Agentes & Copilotos IA",
+    "cat_db": "Banco de Dados & Python",
+    "cat_devops": "DevOps & Boas Práticas",
+    "cat_iot": "Sistemas Embarcados & IoT",
+    "certs_label": "certs"
+  },
+  "contact": {
+    "subtitle": "Vamos conversar sobre seu próximo projeto? Entre em contato!",
+    "toast_ok_title": "✓ Mensagem enviada!",
+    "toast_ok_desc": "Obrigado pelo contato. Responderei em breve!",
+    "toast_err_title": "✗ Erro ao enviar",
+    "toast_err_desc": "Tente novamente ou use o email direto.",
+    "ph_name": "Seu Nome",
+    "ph_subject": "Assunto",
+    "ph_message": "Sua mensagem...",
+    "btn_sending": "Enviando...",
+    "btn_send": "$ send --now",
+    "links_desc": "# links para me encontrar na internet",
+    "ascii_l1": "Estou sempre aberto a",
+    "ascii_l2": "novas oportunidades e",
+    "ascii_l3": "colaborações.",
+    "ascii_l4": "Sinta-se à vontade para",
+    "ascii_l5": "entrar em contato!"
+  },
+  "footer": {
+    "made_with": "Feito com",
+    "by": "por",
+    "rights": "Todos os direitos reservados."
+  }
+}

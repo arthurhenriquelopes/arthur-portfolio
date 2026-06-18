@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "home": "home",
+    "about": "about",
+    "projects": "projects",
+    "skills": "skills",
+    "certificates": "certificates",
+    "contact": "contact"
+  },
+  "hero": {
+    "subtitle": "Full-Stack Developer · Creator of digital solutions",
+    "motto1": "Creating solutions through clean code",
+    "motto2": "Transforming ideas into elegant interfaces",
+    "motto3": "Solving problems with creativity",
+    "commands_label": "-- available commands:",
+    "cmd_projects": "$ ls ./projects",
+    "cmd_cv": "$ download cv.pdf",
+    "cmd_certs": "$ cat ./certificates",
+    "cmd_mail": "$ mail --compose",
+    "scroll": "scroll"
+  },
+  "about": {
+    "header": "01. about",
+    "sec1_title": "# who am i",
+    "sec1_p1_1": "I am a student of",
+    "sec1_p1_2": "Information Systems",
+    "sec1_p1_3": "and a full-stack developer passionate about learning new technologies and solving complex problems with creative approaches. I worked as an intern at",
+    "sec1_p1_4": "Midas Desenvolvimento de Sistemas",
+    "sec1_p1_5": ", working on large-scale projects and integrating collaborative teams guided by agile methodologies (Scrum and Kanban).",
+    "sec2_title": "# soft skills",
+    "sec2_p1": "I am communicative, collaborative, and experienced in agile methodologies. I always seek to learn new technologies, and routinely develop personal projects that facilitate day-to-day life.",
+    "sec3_title": "# current focus",
+    "sec3_p1_1": "At the moment, I am dedicated to my personal project",
+    "sec3_p1_2": ", an open-source platform for comparing Linux distributions focusing on user experience and dynamic data via AI. My goal is to grow as a backend/full-stack developer creating solutions that generate positive impact.",
+    "feat1_desc": "Modern applications from frontend to backend with engineering quality.",
+    "feat2_desc": "Innovative approaches to unlock complex problems.",
+    "feat3_desc": "Tools that generate practical value in everyday life."
+  },
+  "projects": {
+    "subtitle": "Some of my recent works that demonstrate my skills and creativity",
+    "aria_slide": "Go to slide",
+    "p1_type": "AGED/FAPEMA",
+    "p1_desc": "Agricultural Management System with a modern interface, fluid and Intelligent Dashboards. AI for processing documents automatically.",
+    "p2_type": "Open Source",
+    "p2_desc": "Linux distribution comparison platform to help user decision. Data fed dynamically via Groq AI.",
+    "p3_type": "MIDAS • In Production",
+    "p3_desc": "Intelligent chatbot with LLM for natural conversations. Answers questions and automates customer service with real-time generative AI.",
+    "p4_type": "Collaborative",
+    "p4_desc": "Management system for clinics with smart scheduling. Intelligent, modern and easy-to-use dashboards.",
+    "p5_type": "Personal",
+    "p5_desc": "Secure password generator with full customization. Adjust length and types of characters, copy quickly and save local history."
+  },
+  "skills": {
+    "subtitle": "Technologies and tools I master to create efficient solutions",
+    "cat_front": "Frontend",
+    "cat_back": "Backend",
+    "cat_mobile": "Mobile",
+    "cat_tools": "Tools",
+    "cat_ai": "AI & APIs",
+    "cat_soft": "Soft Skills",
+    "comm": "Communication",
+    "team": "Teamwork",
+    "prob": "Problem Solving",
+    "creat": "Creativity"
+  },
+  "certs": {
+    "subtitle1": "certificates in",
+    "subtitle2": "categories",
+    "cat_java": "Java",
+    "cat_spring": "Spring Boot & APIs",
+    "cat_test": "Software Testing",
+    "cat_ai": "Artificial Intelligence",
+    "cat_prompt": "Prompt Engineering",
+    "cat_agents": "AI Agents & Copilots",
+    "cat_db": "Database & Python",
+    "cat_devops": "DevOps & Best Practices",
+    "cat_iot": "Embedded Systems & IoT",
+    "certs_label": "certs"
+  },
+  "contact": {
+    "subtitle": "Let's talk about your next project? Get in touch!",
+    "toast_ok_title": "✓ Message sent!",
+    "toast_ok_desc": "Thanks for reaching out. I'll reply soon!",
+    "toast_err_title": "✗ Error sending message",
+    "toast_err_desc": "Please try again or use direct email.",
+    "ph_name": "Your Name",
+    "ph_subject": "Subject",
+    "ph_message": "Your message...",
+    "btn_sending": "Sending...",
+    "btn_send": "$ send --now",
+    "links_desc": "# links to find me on the internet",
+    "ascii_l1": "I am always open to",
+    "ascii_l2": "new opportunities and",
+    "ascii_l3": "collaborations.",
+    "ascii_l4": "Feel free to",
+    "ascii_l5": "get in touch!"
+  },
+  "footer": {
+    "made_with": "Made with",
+    "by": "by",
+    "rights": "All rights reserved."
+  }
+}

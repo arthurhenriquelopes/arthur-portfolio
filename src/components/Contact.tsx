@@ -2,9 +2,11 @@ import { Mail, Github, Linkedin, Twitter, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import emailjs from '@emailjs/browser';
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,16 +23,16 @@ const Contact = () => {
       .then(
         () => {
           toast({
-            title: "✓ Mensagem enviada!",
-            description: "Obrigado pelo contato. Responderei em breve!",
+            title: t("contact.toast_ok_title"),
+            description: t("contact.toast_ok_desc"),
           });
           (e.target as HTMLFormElement).reset();
         },
         (error) => {
           console.error('Erro:', error);
           toast({
-            title: "✗ Erro ao enviar",
-            description: "Tente novamente ou use o email direto.",
+            title: t("contact.toast_err_title"),
+            description: t("contact.toast_err_desc"),
             variant: "destructive",
           });
         }
@@ -50,13 +52,13 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="tui-section-header">
           <h2 className="text-gruvbox-orange font-bold text-lg whitespace-nowrap">
-            <span className="text-gruvbox-gray">05.</span> contact
+            <span className="text-gruvbox-gray">05.</span> {t("nav.contact")}
           </h2>
         </div>
 
         <p className="text-gruvbox-fg4 text-sm mb-8 max-w-2xl">
           <span className="text-gruvbox-gray"># </span>
-          Vamos conversar sobre seu próximo projeto? Entre em contato!
+          {t("contact.subtitle")}
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -73,7 +75,7 @@ const Contact = () => {
                 <label className="text-[10px] text-gruvbox-gray mb-1 block">From:</label>
                 <input
                   name="from_name"
-                  placeholder="Seu Nome"
+                  placeholder={t("contact.ph_name")}
                   required
                   className="w-full bg-gruvbox-bg border border-gruvbox-bg3 px-3 py-2 text-xs text-gruvbox-fg placeholder:text-gruvbox-bg4 focus:outline-none focus:border-gruvbox-orange transition-colors"
                 />
@@ -92,7 +94,7 @@ const Contact = () => {
                 <label className="text-[10px] text-gruvbox-gray mb-1 block">Subject:</label>
                 <input
                   name="subject"
-                  placeholder="Assunto"
+                  placeholder={t("contact.ph_subject")}
                   required
                   className="w-full bg-gruvbox-bg border border-gruvbox-bg3 px-3 py-2 text-xs text-gruvbox-fg placeholder:text-gruvbox-bg4 focus:outline-none focus:border-gruvbox-orange transition-colors"
                 />
@@ -101,7 +103,7 @@ const Contact = () => {
                 <label className="text-[10px] text-gruvbox-gray mb-1 block">Body:</label>
                 <textarea
                   name="message"
-                  placeholder="Sua mensagem..."
+                  placeholder={t("contact.ph_message")}
                   required
                   className="w-full bg-gruvbox-bg border border-gruvbox-bg3 px-3 py-2 text-xs text-gruvbox-fg placeholder:text-gruvbox-bg4 focus:outline-none focus:border-gruvbox-orange transition-colors min-h-[120px] resize-y"
                 />
@@ -112,7 +114,7 @@ const Contact = () => {
                 className="w-full py-2 bg-gruvbox-orange/10 border border-gruvbox-orange text-gruvbox-orange text-xs font-medium hover:bg-gruvbox-orange/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 <Send className="w-3 h-3" />
-                {isSubmitting ? "Enviando..." : "$ send --now"}
+                {isSubmitting ? t("contact.btn_sending") : t("contact.btn_send")}
               </button>
             </form>
           </div>
@@ -127,7 +129,7 @@ const Contact = () => {
                 <span className="ml-2">connections</span>
               </div>
               <div className="p-4">
-                <p className="text-gruvbox-gray text-xs mb-4"># links para me encontrar na internet</p>
+                <p className="text-gruvbox-gray text-xs mb-4">{t("contact.links_desc")}</p>
                 <div className="space-y-2">
                   {socialLinks.map((social, index) => {
                     const IconComponent = social.icon;
@@ -151,17 +153,16 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* ASCII art accent */}
             <div className="border border-gruvbox-bg3 bg-gruvbox-bg1 p-4">
               <pre className="text-[10px] text-gruvbox-bg4 leading-tight select-none">
 {`  ╔══════════════════════════════╗
   ║                              ║
-  ║   Estou sempre aberto a      ║
-  ║   novas oportunidades e      ║
-  ║   colaborações.              ║
+  ║   ${t("contact.ascii_l1").padEnd(27, ' ')}║
+  ║   ${t("contact.ascii_l2").padEnd(27, ' ')}║
+  ║   ${t("contact.ascii_l3").padEnd(27, ' ')}║
   ║                              ║
-  ║   Sinta-se à vontade para    ║
-  ║   entrar em contato!         ║
+  ║   ${t("contact.ascii_l4").padEnd(27, ' ')}║
+  ║   ${t("contact.ascii_l5").padEnd(27, ' ')}║
   ║                              ║
   ╚══════════════════════════════╝`}
               </pre>

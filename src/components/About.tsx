@@ -1,28 +1,29 @@
 import { Code2, Lightbulb, Rocket } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
   const features = [
     {
       icon: Code2,
       title: "dev.fullstack",
       color: "text-gruvbox-green",
       borderColor: "border-gruvbox-green/30 hover:border-gruvbox-green/60",
-      description:
-        "Aplicações modernas do frontend ao backend com qualidade de engenharia.",
+      description: t("about.feat1_desc"),
     },
     {
       icon: Lightbulb,
       title: "solve.creative",
       color: "text-gruvbox-yellow",
       borderColor: "border-gruvbox-yellow/30 hover:border-gruvbox-yellow/60",
-      description: "Abordagens inovadoras para destravar problemas complexos.",
+      description: t("about.feat2_desc"),
     },
     {
       icon: Rocket,
       title: "ship.impact",
       color: "text-gruvbox-orange",
       borderColor: "border-gruvbox-orange/30 hover:border-gruvbox-orange/60",
-      description: "Ferramentas que geram valor prático no dia a dia.",
+      description: t("about.feat3_desc"),
     },
   ];
 
@@ -32,7 +33,7 @@ const About = () => {
         {/* Section header */}
         <div className="tui-section-header">
           <h2 className="text-gruvbox-orange font-bold text-lg whitespace-nowrap">
-            <span className="text-gruvbox-gray">01.</span> about
+            <span className="text-gruvbox-gray">01.</span> {t("nav.about")}
           </h2>
         </div>
 
@@ -46,26 +47,22 @@ const About = () => {
           </div>
 
           <div className="space-y-3 text-sm">
-            <p className="text-gruvbox-gray"># quem sou eu</p>
+            <p className="text-gruvbox-gray">{t("about.sec1_title")}</p>
             <p className="text-gruvbox-fg leading-relaxed">
-              Sou estudante de{" "}
-              <span className="text-gruvbox-green font-semibold">Sistemas de Informação</span>{" "}
-              e desenvolvedor full‑stack apaixonado em aprender tecnologias novas e
-              resolver problemas complexos com abordagens criativas. Atuei como estagiário na{" "}
-              <span className="text-gruvbox-blue">Midas Desenvolvimento de Sistemas</span>,
-              trabalhando em projetos de grande escala e participando de equipes colaborativas em metodologias ágeis scrum e kanban.
+              {t("about.sec1_p1_1")}{" "}
+              <span className="text-gruvbox-green font-semibold">{t("about.sec1_p1_2")}</span>{" "}
+              {t("about.sec1_p1_3")}{" "}
+              <span className="text-gruvbox-blue">{t("about.sec1_p1_4")}</span>{t("about.sec1_p1_5")}
             </p>
 
-            <p className="text-gruvbox-gray"># habilidades interpessoais</p>
+            <p className="text-gruvbox-gray">{t("about.sec2_title")}</p>
             <p className="text-gruvbox-fg leading-relaxed">
-              Sou comunicativo, colaborativo e experiente em metodologias ágeis.
-              Sempre busco aprender novas tecnologias, e rotineiramente,
-              desenvolvo projetos pessoais que facilitem o dia a dia.
+              {t("about.sec2_p1")}
             </p>
 
-            <p className="text-gruvbox-gray"># foco atual</p>
+            <p className="text-gruvbox-gray">{t("about.sec3_title")}</p>
             <p className="text-gruvbox-fg leading-relaxed">
-              No momento, estou dedicado no meu projeto de autoria pessoal{" "}
+              {t("about.sec3_p1_1")}{" "}
               <a
                 href="https://distrowiki.site"
                 className="text-gruvbox-aqua font-semibold underline underline-offset-4 decoration-gruvbox-aqua/30 hover:decoration-gruvbox-aqua transition-colors"
@@ -74,10 +71,7 @@ const About = () => {
               >
                 DistroWiki
               </a>
-              , uma plataforma open-source para
-              comparação de distribuições Linux com foco em experiência do usuário
-              e dados dinâmicos via IA. Minha meta é crescer como desenvolvedor
-              backend/full-stack criando soluções que gerem impacto positivo.
+              {t("about.sec3_p1_2")}
             </p>
           </div>
         </div>

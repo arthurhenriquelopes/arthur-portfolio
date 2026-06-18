@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Terminal } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
@@ -33,12 +35,12 @@ const Navigation = () => {
   };
 
   const navLinks = [
-    { name: "~", id: "hero", label: "home" },
-    { name: "about", id: "about", label: "sobre" },
-    { name: "projects", id: "projects", label: "projetos" },
-    { name: "skills", id: "skills", label: "skills" },
-    { name: "certs", id: "certificates", label: "certificados" },
-    { name: "contact", id: "contact", label: "contato" },
+    { name: "~", id: "hero", label: t("nav.home") },
+    { name: "about", id: "about", label: t("nav.about") },
+    { name: "projects", id: "projects", label: t("nav.projects") },
+    { name: "skills", id: "skills", label: t("nav.skills") },
+    { name: "certs", id: "certificates", label: t("nav.certificates") },
+    { name: "contact", id: "contact", label: t("nav.contact") },
   ];
 
   return (

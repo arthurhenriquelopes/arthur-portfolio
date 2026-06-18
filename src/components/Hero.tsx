@@ -1,6 +1,7 @@
 import { Download, ArrowDown } from "lucide-react";
 import { ReactTyped } from "react-typed";
 import { useEffect, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const BOOT_SEQUENCE = [
   "GRUB loading...",
@@ -12,6 +13,8 @@ const BOOT_SEQUENCE = [
 ];
 
 const Hero = () => {
+  const { t, i18n } = useTranslation();
+  const cvPdf = i18n.language && i18n.language.startsWith("pt") ? "/Arthur_Henrique_Lopes_Feitosa.pdf" : "/Arthur_Henrique_Lopes_Feitosa_EN.pdf";
   const [bootLines, setBootLines] = useState<string[]>([]);
   const [showMain, setShowMain] = useState(false);
   const idxRef = useRef(0);
@@ -113,7 +116,7 @@ const Hero = () => {
                 Arthur <span className="text-gruvbox-orange">Henrique</span>
               </h1>
               <p className="text-gruvbox-fg4 ml-4 text-sm">
-                Desenvolvedor Full-Stack · Criador de soluções digitais
+                {t("hero.subtitle")}
               </p>
             </div>
 
@@ -128,9 +131,9 @@ const Hero = () => {
                 <span className="text-gruvbox-gray">&quot;</span>
                 <ReactTyped
                   strings={[
-                    "Criando soluções através de código limpo",
-                    "Transformando ideias em interfaces elegantes",
-                    "Resolvendo problemas com criatividade",
+                    t("hero.motto1"),
+                    t("hero.motto2"),
+                    t("hero.motto3"),
                   ]}
                   typeSpeed={40}
                   backSpeed={25}
@@ -145,34 +148,34 @@ const Hero = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm">
                 <span className="text-gruvbox-green font-bold">❯</span>
-                <span className="text-gruvbox-gray">-- comandos disponíveis:</span>
+                <span className="text-gruvbox-gray">{t("hero.commands_label")}</span>
               </div>
               <div className="ml-4 flex flex-wrap gap-2">
                 <button
                   onClick={() => scrollToSection("projects")}
                   className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-green hover:border-gruvbox-green hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium"
                 >
-                  $ ls ./projetos
+                  {t("hero.cmd_projects")}
                 </button>
                 <a
-                  href="/Arthur_Henrique_Lopes_Feitosa.pdf"
-                  download="Arthur_Henrique_Lopes_Feitosa.pdf"
+                  href={cvPdf}
+                  download={cvPdf.split('/').pop()}
                   className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-blue hover:border-gruvbox-blue hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium flex items-center gap-1.5"
                 >
                   <Download className="w-3 h-3" />
-                  $ download cv.pdf
+                  {t("hero.cmd_cv")}
                 </a>
                 <button
                   onClick={() => scrollToSection("certificates")}
                   className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-yellow hover:border-gruvbox-yellow hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium"
                 >
-                  $ cat ./certificados
+                  {t("hero.cmd_certs")}
                 </button>
                 <button
                   onClick={() => scrollToSection("contact")}
                   className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-orange hover:border-gruvbox-orange hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium"
                 >
-                  $ mail --compose
+                  {t("hero.cmd_mail")}
                 </button>
               </div>
             </div>
@@ -187,7 +190,7 @@ const Hero = () => {
           className="text-gruvbox-fg4 hover:text-gruvbox-orange transition-colors flex flex-col items-center gap-1 group"
         >
           <span className="text-[10px] text-gruvbox-gray group-hover:text-gruvbox-orange transition-colors">
-            scroll
+            {t("hero.scroll")}
           </span>
           <ArrowDown className="w-4 h-4 animate-bounce" />
         </button>

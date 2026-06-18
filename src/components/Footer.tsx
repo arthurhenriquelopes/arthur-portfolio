@@ -1,6 +1,8 @@
 import { Terminal } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="bg-gruvbox-bg1 border-t border-gruvbox-bg3">
       {/* Status bar — like vim/tmux */}
@@ -34,9 +36,9 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-6 text-center">
         <p className="text-gruvbox-fg4 text-xs flex items-center justify-center gap-2">
           <span className="text-gruvbox-gray">/*</span>
-          Feito com
+          {t("footer.made_with")}
           <span className="text-gruvbox-red">♥</span>
-          por
+          {t("footer.by")}
           <a
             href="#contact"
             className="text-gruvbox-orange hover:text-gruvbox-yellow transition-colors font-medium"
@@ -46,7 +48,7 @@ const Footer = () => {
           <span className="text-gruvbox-gray">*/</span>
         </p>
         <p className="text-[10px] text-gruvbox-bg4 mt-2">
-          © {new Date().getFullYear()} // Todos os direitos reservados.
+          © {new Date().getFullYear()} // {t("footer.rights")}
         </p>
       </div>
     </footer>

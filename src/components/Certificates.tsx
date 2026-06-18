@@ -1,5 +1,6 @@
 import { Award, ChevronDown, ChevronRight, ExternalLink, Coffee, Leaf, FlaskConical, Brain, MessageSquareCode, Bot, Database, GitBranch, Cpu, type LucideIcon } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface Certificate {
   name: string;
@@ -7,7 +8,7 @@ interface Certificate {
 }
 
 interface CertCategory {
-  category: string;
+  categoryKey: string;
   color: string;
   icon: LucideIcon;
   certs: Certificate[];
@@ -15,7 +16,7 @@ interface CertCategory {
 
 const certData: CertCategory[] = [
   {
-    category: "Java",
+    categoryKey: "certs.cat_java",
     color: "text-gruvbox-red",
     icon: Coffee,
     certs: [
@@ -36,7 +37,7 @@ const certData: CertCategory[] = [
     ],
   },
   {
-    category: "Spring Boot & APIs",
+    categoryKey: "certs.cat_spring",
     color: "text-gruvbox-green",
     icon: Leaf,
     certs: [
@@ -51,7 +52,7 @@ const certData: CertCategory[] = [
     ],
   },
   {
-    category: "Testes de Software",
+    categoryKey: "certs.cat_test",
     color: "text-gruvbox-aqua",
     icon: FlaskConical,
     certs: [
@@ -62,7 +63,7 @@ const certData: CertCategory[] = [
     ],
   },
   {
-    category: "Inteligência Artificial",
+    categoryKey: "certs.cat_ai",
     color: "text-gruvbox-purple",
     icon: Brain,
     certs: [
@@ -76,7 +77,7 @@ const certData: CertCategory[] = [
     ],
   },
   {
-    category: "Engenharia de Prompt",
+    categoryKey: "certs.cat_prompt",
     color: "text-gruvbox-yellow",
     icon: MessageSquareCode,
     certs: [
@@ -87,7 +88,7 @@ const certData: CertCategory[] = [
     ],
   },
   {
-    category: "Agentes & Copilotos IA",
+    categoryKey: "certs.cat_agents",
     color: "text-gruvbox-orange",
     icon: Bot,
     certs: [
@@ -102,7 +103,7 @@ const certData: CertCategory[] = [
     ],
   },
   {
-    category: "Banco de Dados & Python",
+    categoryKey: "certs.cat_db",
     color: "text-gruvbox-blue",
     icon: Database,
     certs: [
@@ -112,7 +113,7 @@ const certData: CertCategory[] = [
     ],
   },
   {
-    category: "DevOps & Boas Práticas",
+    categoryKey: "certs.cat_devops",
     color: "text-gruvbox-fg",
     icon: GitBranch,
     certs: [
@@ -123,7 +124,7 @@ const certData: CertCategory[] = [
     ],
   },
   {
-    category: "Sistemas Embarcados & IoT",
+    categoryKey: "certs.cat_iot",
     color: "text-gruvbox-aqua",
     icon: Cpu,
     certs: [
@@ -143,6 +144,7 @@ const certData: CertCategory[] = [
 const totalCerts = certData.reduce((acc, cat) => acc + cat.certs.length, 0);
 
 const Certificates = () => {
+  const { t } = useTranslation();
   const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set([0]));
 
   const toggleCategory = (index: number) => {
@@ -167,14 +169,14 @@ const Certificates = () => {
       <div className="container mx-auto px-4">
         <div className="tui-section-header">
           <h2 className="text-gruvbox-orange font-bold text-lg whitespace-nowrap">
-            <span className="text-gruvbox-gray">04.</span> certificates
+            <span className="text-gruvbox-gray">04.</span> {t("nav.certificates")}
           </h2>
         </div>
 
         <div className="flex items-center justify-between mb-8 max-w-4xl">
           <p className="text-gruvbox-fg4 text-sm">
             <span className="text-gruvbox-gray"># </span>
-            {totalCerts} certificados em {certData.length} categorias
+            {totalCerts} {t("certs.subtitle1")} {certData.length} {t("certs.subtitle2")}
           </p>
           <div className="flex gap-2">
             <button
@@ -209,10 +211,10 @@ const Certificates = () => {
                   )}
                   <category.icon className={`w-4 h-4 ${category.color} flex-shrink-0`} />
                   <span className={`text-sm font-bold ${category.color}`}>
-                    {category.category}/
+                    {t(category.categoryKey)}/
                   </span>
                   <span className="text-gruvbox-bg4 text-[10px] ml-auto flex-shrink-0">
-                    {category.certs.length} certs
+                    {category.certs.length} {t("certs.certs_label")}
                   </span>
                 </button>
 
