@@ -50,7 +50,7 @@ const Footer = () => {
       </div>
 
       {/* Main Footer (Samuel Rizzon style) */}
-      <div className="container mx-auto px-4 max-w-5xl py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="container mx-auto px-4 max-w-5xl pt-6 pb-20 sm:pb-24 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="font-pixel text-[11px] text-gruvbox-fg4 tracking-wider uppercase text-center sm:text-left">
           Built block by block. © {new Date().getFullYear()} Arthur Henrique
         </p>
