@@ -474,13 +474,11 @@
     transition: none !important;
   }
 
-  /* Sutil iluminação ambiente com leve blur nas seções */
+  /* Sutil iluminação ambiente suave nas seções */
   .section-ambient-glow {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(ellipse 60% 35% at 50% 0%, rgba(219, 120, 88, 0.035), transparent 70%);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: radial-gradient(ellipse 70% 45% at 50% 0%, rgba(219, 120, 88, 0.04), transparent 70%);
   }
 }

@@ -112,7 +112,7 @@ const Projects = () => {
       </div>
 
       {/* Full-width Carousel showcase across entire viewport */}
-      <div className="w-full px-4 sm:px-6 lg:px-12 max-w-[1600px] mx-auto">
+      <div className="w-full px-4 sm:px-6 lg:px-12 max-w-[1600px] mx-auto relative z-10">
         <Carousel
           setApi={setApi}
           plugins={[plugin.current]}
