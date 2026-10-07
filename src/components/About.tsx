@@ -85,6 +85,18 @@ const About = () => {
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
                   <div className="flex justify-between border-b border-gruvbox-bg3/60 py-1">
+                    <span className="text-gruvbox-fg">INSI</span>
+                    <span className="text-gruvbox-orange font-semibold">JR FULL-STACK (ATUAL)</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gruvbox-bg3/60 py-1">
+                    <span className="text-gruvbox-fg">FLYRANK AI</span>
+                    <span className="text-gruvbox-purple">AI BACKEND (ESTÁGIO)</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gruvbox-bg3/60 py-1">
+                    <span className="text-gruvbox-fg">MIDAS SISTEMAS</span>
+                    <span className="text-gruvbox-yellow">JR FULL-STACK DEV</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gruvbox-bg3/60 py-1">
                     <span className="text-gruvbox-fg">DISTROWIKI</span>
                     <span className="text-gruvbox-aqua">OPEN SOURCE LINUX</span>
                   </div>
@@ -93,20 +105,8 @@ const About = () => {
                     <span className="text-gruvbox-green">AGED / FAPEMA</span>
                   </div>
                   <div className="flex justify-between border-b border-gruvbox-bg3/60 py-1">
-                    <span className="text-gruvbox-fg">MIDAS SISTEMAS</span>
-                    <span className="text-gruvbox-yellow">ENTERPRISE EXP</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gruvbox-bg3/60 py-1">
                     <span className="text-gruvbox-fg">LUMMA.IA</span>
-                    <span className="text-gruvbox-purple">LLM CHATBOT</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gruvbox-bg3/60 py-1">
-                    <span className="text-gruvbox-fg">SAÚDE++</span>
-                    <span className="text-gruvbox-blue">CLINIC VUE APP</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gruvbox-bg3/60 py-1">
-                    <span className="text-gruvbox-fg">THIS SITE</span>
-                    <span className="text-gruvbox-orange">REACT + TS + TAILWIND</span>
+                    <span className="text-gruvbox-blue">LLM CHATBOT</span>
                   </div>
                 </div>
               </div>
@@ -135,7 +135,12 @@ const About = () => {
             {t("about.sec1_p1_1")}{" "}
             <span className="text-gruvbox-green font-semibold">{t("about.sec1_p1_2")}</span>{" "}
             {t("about.sec1_p1_3")}{" "}
-            <span className="text-gruvbox-blue">{t("about.sec1_p1_4")}</span>{t("about.sec1_p1_5")}
+            <span className="text-gruvbox-orange font-semibold">{t("about.sec1_p1_insi")}</span>
+            {t("about.sec1_p1_fly")}{" "}
+            <span className="text-gruvbox-purple font-semibold">{t("about.sec1_p1_flyrank")}</span>{" "}
+            {t("about.sec1_p1_fly_role")}{" "}
+            <span className="text-gruvbox-yellow font-semibold">{t("about.sec1_p1_midas")}</span>{" "}
+            {t("about.sec1_p1_midas_role")}
           </p>
 
           <p className="text-gruvbox-fg4">
@@ -154,6 +159,96 @@ const About = () => {
             </a>
             {t("about.sec3_p1_2")}
           </p>
+        </div>
+
+        {/* Career Experience Timeline */}
+        <div className="w-full mb-10 border border-gruvbox-bg3 bg-gruvbox-bg p-6 sm:p-8 shadow-sm">
+          <div className="flex items-center justify-between border-b border-gruvbox-bg3 pb-3 mb-6 text-xs font-mono">
+            <div className="flex items-center gap-2 text-gruvbox-fg4">
+              <span className="text-gruvbox-green">❯</span>
+              <span>{t("about.experience_title", "cat ~/.config/experience.log")}</span>
+            </div>
+            <span className="font-pixel text-[10px] text-gruvbox-orange uppercase tracking-wider">
+              CAREER_HISTORY
+            </span>
+          </div>
+
+          <div className="space-y-6">
+            {/* 1. INSI */}
+            <div className="border-l-2 border-gruvbox-orange pl-4 sm:pl-6 relative">
+              <span className="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-gruvbox-orange ring-4 ring-gruvbox-bg animate-pulse" />
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="font-pixel text-sm text-gruvbox-fg">
+                    {t("about.exp_insi_role")}
+                  </h4>
+                  <span className="text-xs font-mono text-gruvbox-orange font-semibold">
+                    @ {t("about.exp_insi_company")}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-mono text-gruvbox-green border border-gruvbox-green/40 bg-gruvbox-green/10 px-2 py-0.5">
+                    ● {t("about.exp_insi_period")}
+                  </span>
+                  <span className="text-[10px] font-mono text-gruvbox-fg4">
+                    {t("about.exp_insi_type")}
+                  </span>
+                </div>
+              </div>
+              <p className="text-xs font-mono text-gruvbox-fg4 leading-relaxed">
+                {t("about.exp_insi_desc")}
+              </p>
+            </div>
+
+            {/* 2. FlyRank AI */}
+            <div className="border-l-2 border-gruvbox-purple/70 pl-4 sm:pl-6 relative">
+              <span className="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-gruvbox-purple ring-4 ring-gruvbox-bg" />
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="font-pixel text-sm text-gruvbox-fg">
+                    {t("about.exp_fly_role")}
+                  </h4>
+                  <span className="text-xs font-mono text-gruvbox-purple font-semibold">
+                    @ {t("about.exp_fly_company")}
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-gruvbox-fg4 border border-gruvbox-bg3 px-2 py-0.5">
+                  {t("about.exp_fly_period")} · {t("about.exp_fly_type")}
+                </span>
+              </div>
+              <ul className="text-xs font-mono text-gruvbox-fg4 space-y-1 list-disc list-inside mt-2">
+                <li>{t("about.exp_fly_b1")}</li>
+                <li>{t("about.exp_fly_b2")}</li>
+                <li>{t("about.exp_fly_b3")}</li>
+                <li>{t("about.exp_fly_b4")}</li>
+              </ul>
+            </div>
+
+            {/* 3. MIDAS (Grupo MDS) */}
+            <div className="border-l-2 border-gruvbox-yellow/70 pl-4 sm:pl-6 relative">
+              <span className="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-gruvbox-yellow ring-4 ring-gruvbox-bg" />
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="font-pixel text-sm text-gruvbox-fg">
+                    {t("about.exp_midas_role")}
+                  </h4>
+                  <span className="text-xs font-mono text-gruvbox-yellow font-semibold">
+                    @ {t("about.exp_midas_company")}
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-gruvbox-fg4 border border-gruvbox-bg3 px-2 py-0.5">
+                  {t("about.exp_midas_period")} · {t("about.exp_midas_type")}
+                </span>
+              </div>
+              <ul className="text-xs font-mono text-gruvbox-fg4 space-y-1 list-disc list-inside mt-2">
+                <li>{t("about.exp_midas_b1")}</li>
+                <li>{t("about.exp_midas_b2")}</li>
+                <li>{t("about.exp_midas_b3")}</li>
+                <li>{t("about.exp_midas_b4")}</li>
+                <li>{t("about.exp_midas_b5")}</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         {/* Feature Cards - as requested: wider on sides (max-w-5xl) as it was originally */}

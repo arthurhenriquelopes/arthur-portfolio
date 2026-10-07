@@ -42,7 +42,7 @@ const Hero = () => {
         <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-3 sm:mb-4 border border-gruvbox-bg3/80 bg-gruvbox-bg1/70 backdrop-blur-sm text-[10px] sm:text-xs font-mono text-gruvbox-fg4 select-none">
           <span className="w-2 h-2 rounded-full bg-gruvbox-green animate-pulse" />
           <span className="text-gruvbox-green font-bold">STATUS:</span>
-          <span>BUILDING & OPEN FOR WORK</span>
+          <span>JR FULL-STACK DEV @ INSI</span>
         </div>
 
         {/* Big Pixel Headline */}
