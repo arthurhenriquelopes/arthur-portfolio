@@ -1,9 +1,19 @@
+import { useState, useEffect } from "react";
 import { Download, ArrowDown, ExternalLink, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import InteractiveDotGrid from "./InteractiveDotGrid";
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 25);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const cvPdf =
     i18n.language && i18n.language.startsWith("pt")
       ? "/Arthur_Henrique_Lopes_Feitosa_Curriculo.pdf"
@@ -42,7 +52,9 @@ const Hero = () => {
         <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-3 sm:mb-4 border border-gruvbox-bg3/80 bg-gruvbox-bg1/70 backdrop-blur-sm text-[10px] sm:text-xs font-mono text-gruvbox-fg4 select-none">
           <span className="w-2 h-2 rounded-full bg-gruvbox-green animate-pulse" />
           <span className="text-gruvbox-green font-bold">STATUS:</span>
-          <span>JR FULL-STACK DEV @ INSI</span>
+          <span>
+            JR FULL-STACK DEV <span className="text-[#6a1b9a] font-bold">@ INSI</span>
+          </span>
         </div>
 
         {/* Big Pixel Headline */}
@@ -119,8 +131,14 @@ const Hero = () => {
       {/* Hero bottom slot - reserves space for ScrollRunnerBar when in Hero mode */}
       <div className="w-full max-w-xl h-14 flex items-center justify-center pointer-events-none select-none z-10" />
 
-      {/* Subtle Scroll Down Indicator */}
-      <div className="z-10 pb-1">
+      {/* Subtle Scroll Down Indicator - fades out smoothly on scroll down */}
+      <div
+        className={`z-10 pb-1 transition-all duration-300 ease-out ${
+          hasScrolled
+            ? "opacity-0 translate-y-2 pointer-events-none"
+            : "opacity-100 translate-y-0"
+        }`}
+      >
         <button
           onClick={() => scrollToSection("about")}
           className="text-gruvbox-gray hover:text-gruvbox-orange transition-colors flex flex-col items-center gap-0.5 group cursor-pointer"

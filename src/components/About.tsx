@@ -1,31 +1,7 @@
-import { Code2, Lightbulb, Rocket } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const About = () => {
   const { t } = useTranslation();
-  const features = [
-    {
-      icon: Code2,
-      title: "dev.fullstack",
-      color: "text-gruvbox-green",
-      borderColor: "border-gruvbox-green/30 hover:border-gruvbox-green/60",
-      description: t("about.feat1_desc"),
-    },
-    {
-      icon: Lightbulb,
-      title: "solve.creative",
-      color: "text-gruvbox-yellow",
-      borderColor: "border-gruvbox-yellow/30 hover:border-gruvbox-yellow/60",
-      description: t("about.feat2_desc"),
-    },
-    {
-      icon: Rocket,
-      title: "ship.impact",
-      color: "text-gruvbox-orange",
-      borderColor: "border-gruvbox-orange/30 hover:border-gruvbox-orange/60",
-      description: t("about.feat3_desc"),
-    },
-  ];
 
   return (
     <section id="about" className="pt-20 pb-32 bg-gruvbox-bg1 relative overflow-hidden">
@@ -64,7 +40,7 @@ const About = () => {
                 </span>
                 <div className="flex items-center gap-2 font-pixel text-xs text-gruvbox-fg">
                   <span>🇧🇷 🇺🇸</span>
-                  <span className="text-gruvbox-green font-bold">LVL 21</span>
+                  <span className="text-gruvbox-green font-bold">LVL 25</span>
                 </div>
               </div>
 
@@ -161,117 +137,116 @@ const About = () => {
           </p>
         </div>
 
-        {/* Career Experience Timeline */}
-        <div className="w-full mb-10 border border-gruvbox-bg3 bg-gruvbox-bg p-6 sm:p-8 shadow-sm">
-          <div className="flex items-center justify-between border-b border-gruvbox-bg3 pb-3 mb-6 text-xs font-mono">
-            <div className="flex items-center gap-2 text-gruvbox-fg4">
-              <span className="text-gruvbox-green">❯</span>
-              <span>{t("about.experience_title", "cat ~/.config/experience.log")}</span>
-            </div>
-            <span className="font-pixel text-[10px] text-gruvbox-orange uppercase tracking-wider">
-              CAREER_HISTORY
+        {/* Career Experience Timeline - directly on section background without wrapping box */}
+        <div className="w-full mb-6 pt-2">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="text-gruvbox-green font-mono text-xs">❯</span>
+            <span className="font-mono text-xs text-gruvbox-fg4 uppercase tracking-wider">
+              {t("about.experience_title", "cat ~/.config/experience.log")}
             </span>
+            <div className="flex-1 h-[1px] bg-gruvbox-bg3/60" />
           </div>
 
-          <div className="space-y-6">
-            {/* 1. INSI */}
-            <div className="border-l-2 border-gruvbox-orange pl-4 sm:pl-6 relative">
-              <span className="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-gruvbox-orange ring-4 ring-gruvbox-bg animate-pulse" />
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h4 className="font-pixel text-sm text-gruvbox-fg">
-                    {t("about.exp_insi_role")}
-                  </h4>
-                  <span className="text-xs font-mono text-gruvbox-orange font-semibold">
-                    @ {t("about.exp_insi_company")}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono text-gruvbox-green border border-gruvbox-green/40 bg-gruvbox-green/10 px-2 py-0.5">
-                    ● {t("about.exp_insi_period")}
-                  </span>
-                  <span className="text-[10px] font-mono text-gruvbox-fg4">
-                    {t("about.exp_insi_type")}
-                  </span>
-                </div>
-              </div>
-              <p className="text-xs font-mono text-gruvbox-fg4 leading-relaxed">
-                {t("about.exp_insi_desc")}
-              </p>
-            </div>
+          <div className="relative pl-6 sm:pl-8 space-y-8">
+            {/* 1. MIDAS (Grupo MDS) - Mais antigo (topo) */}
+            <div className="relative pb-2">
+              {/* Vertical connector line down to next node */}
+              <div className="absolute -left-[18px] top-[18px] -bottom-8 w-[2px] bg-gruvbox-bg3/70" />
+              {/* Node dot (Yellow) */}
+              <div className="absolute -left-[23px] top-[4px] w-3 h-3 rounded-full bg-[#fabd2f] border-2 border-gruvbox-bg1" />
 
-            {/* 2. FlyRank AI */}
-            <div className="border-l-2 border-gruvbox-purple/70 pl-4 sm:pl-6 relative">
-              <span className="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-gruvbox-purple ring-4 ring-gruvbox-bg" />
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h4 className="font-pixel text-sm text-gruvbox-fg">
-                    {t("about.exp_fly_role")}
-                  </h4>
-                  <span className="text-xs font-mono text-gruvbox-purple font-semibold">
-                    @ {t("about.exp_fly_company")}
-                  </span>
-                </div>
-                <span className="text-[10px] font-mono text-gruvbox-fg4 border border-gruvbox-bg3 px-2 py-0.5">
-                  {t("about.exp_fly_period")} · {t("about.exp_fly_type")}
-                </span>
-              </div>
-              <ul className="text-xs font-mono text-gruvbox-fg4 space-y-1 list-disc list-inside mt-2">
-                <li>{t("about.exp_fly_b1")}</li>
-                <li>{t("about.exp_fly_b2")}</li>
-                <li>{t("about.exp_fly_b3")}</li>
-                <li>{t("about.exp_fly_b4")}</li>
-              </ul>
-            </div>
-
-            {/* 3. MIDAS (Grupo MDS) */}
-            <div className="border-l-2 border-gruvbox-yellow/70 pl-4 sm:pl-6 relative">
-              <span className="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-gruvbox-yellow ring-4 ring-gruvbox-bg" />
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h4 className="font-pixel text-sm text-gruvbox-fg">
-                    {t("about.exp_midas_role")}
-                  </h4>
-                  <span className="text-xs font-mono text-gruvbox-yellow font-semibold">
-                    @ {t("about.exp_midas_company")}
-                  </span>
-                </div>
-                <span className="text-[10px] font-mono text-gruvbox-fg4 border border-gruvbox-bg3 px-2 py-0.5">
-                  {t("about.exp_midas_period")} · {t("about.exp_midas_type")}
-                </span>
-              </div>
-              <ul className="text-xs font-mono text-gruvbox-fg4 space-y-1 list-disc list-inside mt-2">
-                <li>{t("about.exp_midas_b1")}</li>
-                <li>{t("about.exp_midas_b2")}</li>
-                <li>{t("about.exp_midas_b3")}</li>
-                <li>{t("about.exp_midas_b4")}</li>
-                <li>{t("about.exp_midas_b5")}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Feature Cards - as requested: wider on sides (max-w-5xl) as it was originally */}
-        <div className="grid md:grid-cols-3 gap-4">
-          {features.map((feature, idx) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                key={idx}
-                className={`border ${feature.borderColor} bg-gruvbox-bg p-5 transition-all duration-300 group hover:-translate-y-1`}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <Icon className={`w-5 h-5 ${feature.color}`} />
-                  <h3 className={`font-pixel text-xs ${feature.color}`}>
-                    {feature.title}
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="font-pixel text-sm text-[#fabd2f]">
+                    {t("about.exp_midas_company")}
                   </h3>
+                  <span className="text-xs font-mono text-gruvbox-fg">
+                    · {t("about.exp_midas_role")}
+                  </span>
                 </div>
-                <p className="text-gruvbox-fg4 text-xs leading-relaxed font-mono">
-                  {feature.description}
+                <div className="font-mono text-xs mt-1 mb-3 space-y-0.5">
+                  <p className="text-gruvbox-gray text-[11px]">
+                    {t("about.exp_midas_period")}
+                  </p>
+                  <p className="text-gruvbox-fg text-xs font-semibold">
+                    {t("about.exp_midas_type")}
+                  </p>
+                </div>
+                <ul className="text-xs font-mono text-gruvbox-fg4 space-y-1.5 list-disc list-inside">
+                  <li>{t("about.exp_midas_b1")}</li>
+                  <li>{t("about.exp_midas_b2")}</li>
+                  <li>{t("about.exp_midas_b3")}</li>
+                  <li>{t("about.exp_midas_b4")}</li>
+                  <li>{t("about.exp_midas_b5")}</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 2. FlyRank AI - Intermediário */}
+            <div className="relative pb-2">
+              {/* Vertical connector line down to Insi */}
+              <div className="absolute -left-[18px] top-[18px] -bottom-8 w-[2px] bg-gruvbox-bg3/70" />
+              {/* Node dot (Green) */}
+              <div className="absolute -left-[23px] top-[4px] w-3 h-3 rounded-full bg-[#b8bb26] border-2 border-gruvbox-bg1" />
+
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="font-pixel text-sm text-[#b8bb26]">
+                    {t("about.exp_fly_company")}
+                  </h3>
+                  <span className="text-xs font-mono text-gruvbox-fg">
+                    · {t("about.exp_fly_role")}
+                  </span>
+                </div>
+                <div className="font-mono text-xs mt-1 mb-3 space-y-0.5">
+                  <p className="text-gruvbox-gray text-[11px]">
+                    {t("about.exp_fly_period")}
+                  </p>
+                  <p className="text-gruvbox-fg text-xs font-semibold">
+                    {t("about.exp_fly_type")}
+                  </p>
+                </div>
+                <ul className="text-xs font-mono text-gruvbox-fg4 space-y-1.5 list-disc list-inside">
+                  <li>{t("about.exp_fly_b1")}</li>
+                  <li>{t("about.exp_fly_b2")}</li>
+                  <li>{t("about.exp_fly_b3")}</li>
+                  <li>{t("about.exp_fly_b4")}</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 3. Insi - Mais recente / Atual (embaixo) */}
+            <div className="relative">
+              {/* Node dot (Purple #6a1b9a) - NENHUMA linha vertical passa por tras nem continua abaixo */}
+              <div className="absolute -left-[23px] top-[4px] w-3 h-3 rounded-full bg-[#6a1b9a] border-2 border-gruvbox-bg1 shadow-[0_0_8px_#6a1b9a]" />
+              <span className="absolute -left-[27px] top-0 w-5 h-5 rounded-full border border-[#6a1b9a] animate-ping opacity-30 pointer-events-none" />
+
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="font-pixel text-sm text-[#6a1b9a]">
+                    {t("about.exp_insi_company")}
+                  </h3>
+                  <span className="text-xs font-mono text-gruvbox-fg">
+                    · {t("about.exp_insi_role")}
+                  </span>
+                  <span className="font-mono text-[10px] text-gruvbox-green border border-gruvbox-green/40 px-1.5 py-0.2">
+                    ● ATUAL
+                  </span>
+                </div>
+                <div className="font-mono text-xs mt-1 mb-3 space-y-0.5">
+                  <p className="text-gruvbox-gray text-[11px]">
+                    {t("about.exp_insi_period")}
+                  </p>
+                  <p className="text-gruvbox-fg text-xs font-semibold">
+                    {t("about.exp_insi_type")}
+                  </p>
+                </div>
+                <p className="text-xs font-mono text-gruvbox-fg4 leading-relaxed max-w-3xl">
+                  {t("about.exp_insi_desc")}
                 </p>
               </div>
-            );
-          })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
