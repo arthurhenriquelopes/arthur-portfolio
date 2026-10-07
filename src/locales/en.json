@@ -8,6 +8,10 @@
     "contact": "contact"
   },
   "hero": {
+    "title": "ARTHUR HENRIQUE",
+    "tagline_line1": "FULL-STACK ENGINEER. FOUNDER OF DISTROWIKI.",
+    "tagline_line2": "BUILDING FLUID WEB EXPERIENCES & GENERATIVE AI.",
+    "see_projects": "SEE PROJECTS ↓",
     "subtitle": "Full-Stack Developer · Creator of digital solutions",
     "motto1": "Creating solutions through clean code",
     "motto2": "Transforming ideas into elegant interfaces",
@@ -32,9 +36,9 @@
     "sec3_title": "# current focus",
     "sec3_p1_1": "At the moment, I am dedicated to my personal project",
     "sec3_p1_2": ", an open-source platform for comparing Linux distributions focusing on user experience and dynamic data via AI. My goal is to grow as a backend/full-stack developer creating solutions that generate positive impact.",
-    "feat1_desc": "Modern applications from frontend to backend with engineering quality.",
-    "feat2_desc": "Innovative approaches to unlock complex problems.",
-    "feat3_desc": "Tools that generate practical value in everyday life."
+    "feat1_desc": "Modern apps from frontend to backend with solid engineering.",
+    "feat2_desc": "Innovative approaches to solve complex architecture challenges.",
+    "feat3_desc": "Tools that generate real impact and value in everyday work."
   },
   "projects": {
     "subtitle": "Some of my recent works that demonstrate my skills and creativity",

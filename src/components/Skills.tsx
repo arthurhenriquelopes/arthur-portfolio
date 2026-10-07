@@ -50,12 +50,15 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gruvbox-bg1">
-      <div className="container mx-auto px-4">
-        <div className="tui-section-header">
-          <h2 className="text-gruvbox-orange font-bold text-lg whitespace-nowrap">
-            <span className="text-gruvbox-gray">03.</span> {t("nav.skills")}
+    <section id="skills" className="py-20 bg-gruvbox-bg1 relative overflow-hidden">
+      <div className="section-ambient-glow" />
+      <div className="container mx-auto px-4 max-w-5xl relative z-10">
+        <div className="flex items-center gap-4 mb-4">
+          <h2 className="font-pixel text-xl sm:text-2xl text-gruvbox-orange tracking-wider uppercase">
+            <span className="text-gruvbox-gray mr-3">03.</span>
+            {t("nav.skills", "Skills")}
           </h2>
+          <div className="flex-1 h-[1px] bg-gruvbox-bg3" />
         </div>
 
         <p className="text-gruvbox-fg4 text-sm mb-8 max-w-2xl">
@@ -63,7 +66,7 @@ const Skills = () => {
           {t("skills.subtitle")}
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
           {skillCategories.map((category, index) => (
             <div key={index} className={`border ${category.borderColor} bg-gruvbox-bg p-4 transition-all duration-300 hover:border-opacity-50`}>
               <div className="flex items-center gap-2 mb-3 pb-2 border-b border-gruvbox-bg3">

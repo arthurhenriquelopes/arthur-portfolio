@@ -165,15 +165,18 @@ const Certificates = () => {
   };
 
   return (
-    <section id="certificates" className="py-20 bg-gruvbox-bg1">
-      <div className="container mx-auto px-4">
-        <div className="tui-section-header">
-          <h2 className="text-gruvbox-orange font-bold text-lg whitespace-nowrap">
-            <span className="text-gruvbox-gray">04.</span> {t("nav.certificates")}
+    <section id="certificates" className="py-20 bg-gruvbox-bg1 relative overflow-hidden">
+      <div className="section-ambient-glow" />
+      <div className="container mx-auto px-4 max-w-5xl relative z-10">
+        <div className="flex items-center gap-4 mb-4">
+          <h2 className="font-pixel text-xl sm:text-2xl text-gruvbox-orange tracking-wider uppercase">
+            <span className="text-gruvbox-gray mr-3">04.</span>
+            {t("nav.certificates", "Certificates")}
           </h2>
+          <div className="flex-1 h-[1px] bg-gruvbox-bg3" />
         </div>
 
-        <div className="flex items-center justify-between mb-8 max-w-4xl">
+        <div className="flex items-center justify-between mb-8 w-full">
           <p className="text-gruvbox-fg4 text-sm">
             <span className="text-gruvbox-gray"># </span>
             {totalCerts} {t("certs.subtitle1")} {certData.length} {t("certs.subtitle2")}
@@ -194,7 +197,7 @@ const Certificates = () => {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-2">
+        <div className="w-full space-y-2">
           {certData.map((category, catIdx) => {
             const isExpanded = expandedCategories.has(catIdx);
             return (

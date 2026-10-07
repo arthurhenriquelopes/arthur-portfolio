@@ -1,37 +1,13 @@
-import { Download, ArrowDown } from "lucide-react";
-import { ReactTyped } from "react-typed";
-import { useEffect, useState, useRef } from "react";
+import { Download, ArrowDown, ExternalLink, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
-
-const BOOT_SEQUENCE = [
-  "GRUB loading...",
-  "Initializing kernel 6.8.0-arthurix...",
-  "Loading modules: portfolio.ko, skills.ko, projects.ko",
-  "Mounting /dev/creativity on /home/arthur",
-  "Starting arthurd.service...",
-  "[  OK  ] Reached target graphical.target",
-];
+import InteractiveDotGrid from "./InteractiveDotGrid";
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
-  const cvPdf = i18n.language && i18n.language.startsWith("pt") ? "/Arthur_Henrique_Lopes_Feitosa.pdf" : "/Arthur_Henrique_Lopes_Feitosa_EN.pdf";
-  const [bootLines, setBootLines] = useState<string[]>([]);
-  const [showMain, setShowMain] = useState(false);
-  const idxRef = useRef(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (idxRef.current < BOOT_SEQUENCE.length) {
-        const line = BOOT_SEQUENCE[idxRef.current];
-        setBootLines((prev) => [...prev, line]);
-        idxRef.current++;
-      } else {
-        clearInterval(timer);
-        setTimeout(() => setShowMain(true), 400);
-      }
-    }, 250);
-    return () => clearInterval(timer);
-  }, []);
+  const cvPdf =
+    i18n.language && i18n.language.startsWith("pt")
+      ? "/Arthur_Henrique_Lopes_Feitosa_Curriculo.pdf"
+      : "/Arthur_Henrique_Lopes_Feitosa_Resume_Java_Developer.pdf";
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -40,159 +16,120 @@ const Hero = () => {
     }
   };
 
+  const socials = [
+    { name: "GITHUB", url: "https://github.com/arthurhenriquelopes" },
+    { name: "LINKEDIN", url: "https://www.linkedin.com/in/arthur-henrique-lopes/" },
+    { name: "EMAIL", url: "mailto:arthurhenriquelopesf@gmail.com" },
+  ];
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center bg-gruvbox-bg overflow-hidden"
+      className="relative h-[100dvh] max-h-[100dvh] min-h-[560px] flex flex-col justify-between items-center bg-gruvbox-bg overflow-hidden pt-16 pb-3 px-4 select-none"
     >
-      {/* Subtle grid background */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(168,153,132,0.5) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(168,153,132,0.5) 1px, transparent 1px)
-          `,
-          backgroundSize: "40px 40px",
-        }}
+      {/* Interactive Dots Background with Mouse Spotlight & Bottom Fade Mask */}
+      <InteractiveDotGrid
+        dotSize={1.8}
+        gap={28}
+        glowRadius={150}
+        color="rgba(168, 153, 132, 0.16)"
+        activeColor="#fe8019"
       />
 
-      <div className="container mx-auto px-4 z-10 max-w-4xl">
-        {/* Boot sequence */}
-        <div className={`transition-all duration-500 ${showMain ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100 mb-8'}`}>
-          <div className="tui-window p-4">
-            <div className="tui-titlebar -m-4 mb-4">
-              <span className="tui-titlebar-dot bg-gruvbox-red" />
-              <span className="tui-titlebar-dot bg-gruvbox-yellow" />
-              <span className="tui-titlebar-dot bg-gruvbox-green" />
-              <span className="ml-2">boot</span>
-            </div>
-            {bootLines.map((line, i) => (
-              <div key={i} className="text-xs animate-fade-in-fast" style={{ animationDelay: `${i * 50}ms` }}>
-                {line.startsWith("[") ? (
-                  <>
-                    <span className="text-gruvbox-green">{line.substring(0, 8)}</span>
-                    <span className="text-gruvbox-fg">{line.substring(8)}</span>
-                  </>
-                ) : (
-                  <span className="text-gruvbox-fg4">{line}</span>
-                )}
-              </div>
-            ))}
-            {!showMain && bootLines.length > 0 && <span className="tui-cursor" />}
-          </div>
+      {/* Main Content Area - perfectly centered vertically */}
+      <div className="container mx-auto max-w-4xl z-10 flex flex-col items-center text-center my-auto px-2">
+        {/* Status Pill / CLI Badge */}
+        <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-3 sm:mb-4 border border-gruvbox-bg3/80 bg-gruvbox-bg1/70 backdrop-blur-sm text-[10px] sm:text-xs font-mono text-gruvbox-fg4 select-none">
+          <span className="w-2 h-2 rounded-full bg-gruvbox-green animate-pulse" />
+          <span className="text-gruvbox-green font-bold">STATUS:</span>
+          <span>BUILDING & OPEN FOR WORK</span>
         </div>
 
-        {/* Main content */}
-        <div className={`transition-all duration-700 ${showMain ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          {/* Avatar with terminal frame */}
-          <div className="flex justify-center mb-8">
-            <div className="relative">
-              <div className="absolute -inset-[2px] bg-gradient-to-br from-gruvbox-orange via-gruvbox-yellow to-gruvbox-green opacity-60" />
-              <img
-                src="https://avatars.githubusercontent.com/u/166043613?s=400&u=f0772edd2bcb21ca3812ff7d6a8d287c96da0022&v=4"
-                alt="Arthur Henrique"
-                className="relative w-28 h-28 md:w-36 md:h-36 object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
-              />
-            </div>
-          </div>
+        {/* Big Pixel Headline */}
+        <h1 className="font-pixel text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gruvbox-fg mb-2 sm:mb-3 md:mb-4 select-none uppercase drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
+          Arthur <span className="text-gruvbox-orange">Henrique</span>
+        </h1>
 
-          {/* Terminal-style intro */}
-          <div className="tui-window p-6 md:p-8">
-            <div className="tui-titlebar -m-6 md:-m-8 mb-6 md:mb-8 px-4">
-              <span className="tui-titlebar-dot bg-gruvbox-red" />
-              <span className="tui-titlebar-dot bg-gruvbox-yellow" />
-              <span className="tui-titlebar-dot bg-gruvbox-green" />
-              <span className="ml-2">~/arthur-henrique</span>
-            </div>
+        {/* Tagline / Subtitle */}
+        <div className="font-mono text-[11px] sm:text-xs md:text-sm text-gruvbox-fg4 max-w-xl mb-3 sm:mb-4 md:mb-6 space-y-1 leading-relaxed uppercase tracking-wider">
+          <p>
+            {t("hero.tagline_line1", "FULL-STACK ENGINEER. FOUNDER OF")}{" "}
+            <a
+              href="https://distrowiki.site"
+              target="_blank"
+              rel="noreferrer"
+              className="text-gruvbox-aqua font-bold hover:underline underline-offset-4 decoration-gruvbox-aqua/60 transition-all inline-flex items-center gap-1"
+            >
+              DISTROWIKI
+              <ExternalLink className="w-3 h-3 inline" />
+            </a>
+            .
+          </p>
+          <p className="text-gruvbox-gray">
+            {t(
+              "hero.tagline_line2",
+              "BUILDING FLUID WEB EXPERIENCES & GENERATIVE AI APPS."
+            )}
+          </p>
+        </div>
 
-            {/* whoami */}
-            <div className="mb-6">
-              <div className="flex items-center gap-2 text-sm mb-1">
-                <span className="text-gruvbox-green font-bold">❯</span>
-                <span className="text-gruvbox-blue">whoami</span>
-              </div>
-              <h1 className="text-3xl md:text-5xl font-bold text-gruvbox-fg ml-4 mb-2">
-                Arthur <span className="text-gruvbox-orange">Henrique</span>
-              </h1>
-              <p className="text-gruvbox-fg4 ml-4 text-sm">
-                {t("hero.subtitle")}
-              </p>
-            </div>
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-5">
+          <button
+            onClick={() => scrollToSection("projects")}
+            className="font-pixel text-[11px] sm:text-xs tracking-wider px-4 sm:px-6 py-2 sm:py-2.5 bg-gruvbox-fg text-gruvbox-bg hover:bg-white hover:text-black font-semibold transition-all duration-200 uppercase shadow-md flex items-center gap-2 hover:-translate-y-0.5 active:translate-y-0 border border-gruvbox-fg cursor-pointer"
+          >
+            {t("hero.see_projects", "SEE PROJECTS ↓")}
+          </button>
 
-            {/* Typing effect */}
-            <div className="mb-6">
-              <div className="flex items-center gap-2 text-sm mb-1">
-                <span className="text-gruvbox-green font-bold">❯</span>
-                <span className="text-gruvbox-blue">cat</span>
-                <span className="text-gruvbox-fg4">motto.txt</span>
-              </div>
-              <div className="ml-4 text-gruvbox-yellow text-base md:text-lg h-[2em] flex items-center">
-                <span className="text-gruvbox-gray">&quot;</span>
-                <ReactTyped
-                  strings={[
-                    t("hero.motto1"),
-                    t("hero.motto2"),
-                    t("hero.motto3"),
-                  ]}
-                  typeSpeed={40}
-                  backSpeed={25}
-                  loop
-                  className="text-gruvbox-yellow"
-                />
-                <span className="text-gruvbox-gray">&quot;</span>
-              </div>
-            </div>
+          <a
+            href={cvPdf}
+            download={cvPdf.split("/").pop()}
+            className="font-mono text-[11px] sm:text-xs px-3 sm:px-4 py-2 sm:py-2.5 bg-gruvbox-bg1/80 border border-gruvbox-bg3 text-gruvbox-blue hover:border-gruvbox-blue hover:text-gruvbox-fg transition-all flex items-center gap-1.5"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>CV.PDF</span>
+          </a>
 
-            {/* Action buttons as commands */}
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm">
-                <span className="text-gruvbox-green font-bold">❯</span>
-                <span className="text-gruvbox-gray">{t("hero.commands_label")}</span>
-              </div>
-              <div className="ml-4 flex flex-wrap gap-2">
-                <button
-                  onClick={() => scrollToSection("projects")}
-                  className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-green hover:border-gruvbox-green hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium"
-                >
-                  {t("hero.cmd_projects")}
-                </button>
-                <a
-                  href={cvPdf}
-                  download={cvPdf.split('/').pop()}
-                  className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-blue hover:border-gruvbox-blue hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium flex items-center gap-1.5"
-                >
-                  <Download className="w-3 h-3" />
-                  {t("hero.cmd_cv")}
-                </a>
-                <button
-                  onClick={() => scrollToSection("certificates")}
-                  className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-yellow hover:border-gruvbox-yellow hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium"
-                >
-                  {t("hero.cmd_certs")}
-                </button>
-                <button
-                  onClick={() => scrollToSection("contact")}
-                  className="px-4 py-2 bg-gruvbox-bg2 border border-gruvbox-bg3 text-gruvbox-orange hover:border-gruvbox-orange hover:bg-gruvbox-bg2/80 transition-all text-xs font-medium"
-                >
-                  {t("hero.cmd_mail")}
-                </button>
-              </div>
-            </div>
-          </div>
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="font-mono text-[11px] sm:text-xs px-3 sm:px-4 py-2 sm:py-2.5 bg-gruvbox-bg1/80 border border-gruvbox-bg3 text-gruvbox-yellow hover:border-gruvbox-yellow hover:text-gruvbox-fg transition-all flex items-center gap-1.5 cursor-pointer"
+          >
+            <Mail className="w-3.5 h-3.5" />
+            <span>CONTACT</span>
+          </button>
+        </div>
+
+        {/* Social Links Row */}
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[10px] sm:text-xs font-pixel text-gruvbox-fg4 tracking-widest mb-1 sm:mb-2">
+          {socials.map((social) => (
+            <a
+              key={social.name}
+              href={social.url}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-gruvbox-orange transition-colors duration-200 py-0.5"
+            >
+              {social.name}
+            </a>
+          ))}
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-0 right-0 flex justify-center z-10">
+      {/* Hero bottom slot - reserves space for ScrollRunnerBar when in Hero mode */}
+      <div className="w-full max-w-xl h-14 flex items-center justify-center pointer-events-none select-none z-10" />
+
+      {/* Subtle Scroll Down Indicator */}
+      <div className="z-10 pb-1">
         <button
           onClick={() => scrollToSection("about")}
-          className="text-gruvbox-fg4 hover:text-gruvbox-orange transition-colors flex flex-col items-center gap-1 group"
+          className="text-gruvbox-gray hover:text-gruvbox-orange transition-colors flex flex-col items-center gap-0.5 group cursor-pointer"
+          aria-label="Scroll to About section"
         >
-          <span className="text-[10px] text-gruvbox-gray group-hover:text-gruvbox-orange transition-colors">
-            {t("hero.scroll")}
+          <span className="text-[9px] sm:text-[10px] font-mono tracking-widest uppercase group-hover:text-gruvbox-orange transition-colors">
+            {t("hero.scroll", "SCROLL")}
           </span>
-          <ArrowDown className="w-4 h-4 animate-bounce" />
+          <ArrowDown className="w-3 h-3 animate-bounce text-gruvbox-fg4 group-hover:text-gruvbox-orange" />
         </button>
       </div>
     </section>

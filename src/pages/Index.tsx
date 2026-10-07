@@ -6,6 +6,7 @@ import Skills from "@/components/Skills";
 import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollRunnerBar from "@/components/ScrollRunnerBar";
 
 const Index = () => {
   return (
@@ -18,6 +19,8 @@ const Index = () => {
       <Certificates />
       <Contact />
       <Footer />
+      {/* Global Persistent Scroll Runner with Clawd Companion */}
+      <ScrollRunnerBar />
     </div>
   );
 };

@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 
 const Projects = () => {
   const { t } = useTranslation();
-  const plugin = useRef(Autoplay({ delay: 10000, stopOnInteraction: false }));
+  const plugin = useRef(Autoplay({ delay: 6000, stopOnInteraction: false }));
   const [api, setApi] = useState<EmblaCarouselType>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
@@ -93,77 +93,97 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 bg-gruvbox-bg">
-      <div className="container mx-auto px-4">
-        <div className="tui-section-header">
-          <h2 className="text-gruvbox-orange font-bold text-lg whitespace-nowrap">
-            <span className="text-gruvbox-gray">02.</span> {t("nav.projects")}
+    <section id="projects" className="py-24 bg-gruvbox-bg relative overflow-hidden">
+      <div className="section-ambient-glow" />
+      {/* Section Header - strictly aligned with standard max-w-5xl */}
+      <div className="container mx-auto px-4 max-w-5xl mb-8 relative z-10">
+        <div className="flex items-center gap-4 mb-4">
+          <h2 className="font-pixel text-xl sm:text-2xl text-gruvbox-orange tracking-wider uppercase">
+            <span className="text-gruvbox-gray mr-3">02.</span>
+            {t("nav.projects", "Projects")}
           </h2>
+          <div className="flex-1 h-[1px] bg-gruvbox-bg3" />
         </div>
 
-        <p className="text-gruvbox-fg4 text-sm mb-8 max-w-2xl">
+        <p className="text-gruvbox-fg4 text-xs font-mono max-w-2xl uppercase tracking-wider">
           <span className="text-gruvbox-gray"># </span>
           {t("projects.subtitle")}
         </p>
+      </div>
 
-        <div className="max-w-7xl mx-auto">
-          <Carousel
-            setApi={setApi}
-            plugins={[plugin.current]}
-            className="w-full"
-            opts={{ align: "start", loop: true }}
-          >
-            <CarouselContent className="-ml-4">
-              {projects.map((project, index) => {
-                const isExpanded = expandedProjects.has(index);
-                const hasMoreTags = project.tags.length > 4;
-                const visibleTags = isExpanded ? project.tags : project.tags.slice(0, 4);
+      {/* Full-width Carousel showcase across entire viewport */}
+      <div className="w-full px-4 sm:px-6 lg:px-12 max-w-[1600px] mx-auto">
+        <Carousel
+          setApi={setApi}
+          plugins={[plugin.current]}
+          className="w-full"
+          opts={{ align: "start", loop: true }}
+        >
+          <CarouselContent className="-ml-4">
+            {projects.map((project, index) => {
+              const isExpanded = expandedProjects.has(index);
+              const hasMoreTags = project.tags.length > 4;
+              const visibleTags = isExpanded ? project.tags : project.tags.slice(0, 4);
 
-                return (
-                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <div className="border border-gruvbox-bg3 bg-gruvbox-bg1 h-full flex flex-col group hover:border-gruvbox-orange/40 transition-all duration-300">
-                      {/* Title bar */}
-                      <div className="tui-titlebar">
-                        <span className="tui-titlebar-dot bg-gruvbox-red" />
-                        <span className="tui-titlebar-dot bg-gruvbox-yellow" />
-                        <span className="tui-titlebar-dot bg-gruvbox-green" />
-                        <span className="ml-2 text-[11px]">{project.title.toLowerCase().replace(/\s+/g, '-')}</span>
-                        {project.wip && (
-                          <span className="ml-auto text-[10px] text-gruvbox-yellow border border-gruvbox-yellow/30 px-1.5">[WIP]</span>
-                        )}
-                      </div>
+              return (
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="border border-gruvbox-bg3 bg-gruvbox-bg1 h-full flex flex-col group hover:border-gruvbox-orange/40 transition-all duration-300 shadow-lg">
+                    {/* Title bar */}
+                    <div className="tui-titlebar">
+                      <span className="tui-titlebar-dot bg-gruvbox-red" />
+                      <span className="tui-titlebar-dot bg-gruvbox-yellow" />
+                      <span className="tui-titlebar-dot bg-gruvbox-green" />
+                      <span className="ml-2 text-[11px] font-mono">
+                        {project.title.toLowerCase().replace(/\s+/g, "-")}
+                      </span>
+                      {project.wip && (
+                        <span className="ml-auto text-[10px] text-gruvbox-yellow border border-gruvbox-yellow/30 px-1.5 font-mono">
+                          [WIP]
+                        </span>
+                      )}
+                    </div>
 
-                      {/* Image */}
-                      <div className="relative overflow-hidden aspect-[4/3]">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-gruvbox-bg1 via-transparent to-transparent" />
-                      </div>
+                    {/* Image */}
+                    <div className="relative overflow-hidden aspect-[4/3]">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gruvbox-bg1 via-transparent to-transparent opacity-80" />
+                    </div>
 
-                      {/* Content */}
-                      <div className="p-4 flex flex-col flex-1">
-                        <div className="flex items-start justify-between gap-2 mb-2">
-                          <h3 className="text-sm font-bold text-gruvbox-fg">{project.title}</h3>
-                          <span className="text-[10px] text-gruvbox-fg4 border border-gruvbox-bg3 px-1.5 py-0.5 whitespace-nowrap">
+                    {/* Content */}
+                    <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <h3 className="font-pixel text-xs sm:text-sm text-gruvbox-fg group-hover:text-gruvbox-orange transition-colors">
+                            {project.title}
+                          </h3>
+                          <span className="text-[10px] font-mono text-gruvbox-fg4 border border-gruvbox-bg3 px-1.5 py-0.5 whitespace-nowrap">
                             {project.year} · {project.type}
                           </span>
                         </div>
 
-                        <p className="text-gruvbox-fg4 mb-3 text-xs leading-relaxed line-clamp-3 flex-grow">
+                        <p className="text-gruvbox-fg4 mb-3 text-xs font-mono leading-relaxed line-clamp-3">
                           {project.description}
                         </p>
+                      </div>
 
+                      <div>
                         {/* Tags */}
-                        <div className={`flex flex-wrap gap-1.5 mb-3 transition-all duration-300 ${
-                          isExpanded ? "max-h-32 overflow-y-auto pr-2 scrollbar-thin" : "max-h-none"
-                        }`}>
+                        <div
+                          className={`flex flex-wrap gap-1.5 mb-3 transition-all duration-300 ${
+                            isExpanded ? "max-h-32 overflow-y-auto pr-2 scrollbar-thin" : "max-h-none"
+                          }`}
+                        >
                           {visibleTags.map((tag, tagIndex) => {
                             const Icon = techIcons[tag];
                             return (
-                              <span key={tagIndex} className="tui-tag flex items-center gap-1 text-[10px]">
+                              <span
+                                key={tagIndex}
+                                className="tui-tag flex items-center gap-1 text-[10px]"
+                              >
                                 {Icon && <Icon className="w-3 h-3" />}
                                 {tag}
                               </span>
@@ -182,45 +202,45 @@ const Projects = () => {
                         {/* Action buttons */}
                         <div className="flex gap-2 pt-2 border-t border-gruvbox-bg3">
                           <button
-                            className="flex-1 flex items-center justify-center gap-1.5 py-1.5 text-[11px] text-gruvbox-fg4 border border-gruvbox-bg3 hover:border-gruvbox-fg4 hover:text-gruvbox-fg transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                            className="flex-1 flex items-center justify-center gap-1.5 py-1.5 text-[11px] text-gruvbox-fg4 border border-gruvbox-bg3 hover:border-gruvbox-fg4 hover:text-gruvbox-fg transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
                             onClick={() => project.code && window.open(project.code, "_blank")}
                             disabled={!project.code}
                           >
                             <Github className="w-3 h-3" />
-                            src
+                            <span>src</span>
                           </button>
                           <button
-                            className="flex-1 flex items-center justify-center gap-1.5 py-1.5 text-[11px] text-gruvbox-orange border border-gruvbox-orange/30 hover:border-gruvbox-orange hover:bg-gruvbox-orange/10 transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:text-gruvbox-fg4 disabled:border-gruvbox-bg3"
+                            className="flex-1 flex items-center justify-center gap-1.5 py-1.5 text-[11px] text-gruvbox-orange border border-gruvbox-orange/30 hover:border-gruvbox-orange hover:bg-gruvbox-orange/10 transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:text-gruvbox-fg4 disabled:border-gruvbox-bg3 cursor-pointer"
                             onClick={() => project.demo && window.open(project.demo, "_blank")}
                             disabled={!project.demo}
                           >
                             <ExternalLink className="w-3 h-3" />
-                            demo
+                            <span>demo</span>
                           </button>
                         </div>
                       </div>
                     </div>
-                  </CarouselItem>
-                );
-              })}
-            </CarouselContent>
-          </Carousel>
+                  </div>
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+        </Carousel>
 
-          {/* Pagination dots */}
-          <div className="flex justify-center gap-2 mt-6">
-            {Array.from({ length: count }).map((_, index) => (
-              <button
-                key={index}
-                className={`h-1.5 transition-all duration-300 ${
-                  index === current
-                    ? "bg-gruvbox-orange w-8"
-                    : "bg-gruvbox-bg3 w-3 hover:bg-gruvbox-bg4"
-                }`}
-                onClick={() => api?.scrollTo(index)}
-                aria-label={`${t("projects.aria_slide")} ${index + 1}`}
-              />
-            ))}
-          </div>
+        {/* Pagination dots */}
+        <div className="flex justify-center gap-2 mt-8">
+          {Array.from({ length: count }).map((_, index) => (
+            <button
+              key={index}
+              className={`h-1.5 transition-all duration-300 cursor-pointer ${
+                index === current
+                  ? "bg-gruvbox-orange w-8"
+                  : "bg-gruvbox-bg3 w-3 hover:bg-gruvbox-bg4"
+              }`}
+              onClick={() => api?.scrollTo(index)}
+              aria-label={`${t("projects.aria_slide")} ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

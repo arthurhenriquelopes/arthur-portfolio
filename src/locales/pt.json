@@ -8,6 +8,10 @@
     "contact": "contato"
   },
   "hero": {
+    "title": "ARTHUR HENRIQUE",
+    "tagline_line1": "ENGENHEIRO FULL-STACK. CRIADOR DO DISTROWIKI.",
+    "tagline_line2": "CONSTRUINDO APLICAÇÕES FLUIDAS & IA GENERATIVA.",
+    "see_projects": "VER PROJETOS ↓",
     "subtitle": "Desenvolvedor Full-Stack · Criador de soluções digitais",
     "motto1": "Criando soluções através de código limpo",
     "motto2": "Transformando ideias em interfaces elegantes",
@@ -32,9 +36,9 @@
     "sec3_title": "# foco atual",
     "sec3_p1_1": "No momento, estou dedicado no meu projeto de autoria pessoal",
     "sec3_p1_2": ", uma plataforma open-source para comparação de distribuições Linux com foco em experiência do usuário e dados dinâmicos via IA. Minha meta é crescer como desenvolvedor backend/full-stack criando soluções que gerem impacto positivo.",
-    "feat1_desc": "Aplicações modernas do frontend ao backend com qualidade de engenharia.",
+    "feat1_desc": "Aplicações do frontend ao backend com engenharia sólida.",
     "feat2_desc": "Abordagens inovadoras para destravar problemas complexos.",
-    "feat3_desc": "Ferramentas que geram valor prático no dia a dia."
+    "feat3_desc": "Ferramentas que geram impacto e valor real no dia a dia."
   },
   "projects": {
     "subtitle": "Alguns dos meus trabalhos recentes que demonstram minhas habilidades e criatividade",

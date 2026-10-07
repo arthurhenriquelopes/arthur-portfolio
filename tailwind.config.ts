@@ -113,32 +113,27 @@ export default {
   			'2xl': 'var(--shadow-2xl)'
   		},
   		fontFamily: {
-  			sans: [
-  				'JetBrains Mono',
-  				'IBM Plex Mono',
-  				'ui-monospace',
-  				'SFMono-Regular',
-  				'Menlo',
-  				'Monaco',
-  				'Consolas',
-  				'Liberation Mono',
-  				'Courier New',
-  				'monospace'
-  			],
-  			serif: [
-  				'JetBrains Mono',
+  			pixel: [
+  				'"Silkscreen"',
   				'monospace'
   			],
   			mono: [
-  				'JetBrains Mono',
-  				'IBM Plex Mono',
+  				'"JetBrains Mono"',
   				'ui-monospace',
-  				'SFMono-Regular',
-  				'Menlo',
-  				'Monaco',
-  				'Consolas',
-  				'Liberation Mono',
-  				'Courier New',
+  				'monospace'
+  			],
+  			sans: [
+  				'"JetBrains Mono"',
+  				'ui-monospace',
+  				'monospace'
+  			],
+  			serif: [
+  				'"JetBrains Mono"',
+  				'monospace'
+  			],
+  			mono: [
+  				'"JetBrains Mono"',
+  				'ui-monospace',
   				'monospace'
   			]
   		}
